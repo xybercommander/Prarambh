@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hack_it_out_demo/SignInPages/profile_type.dart';
+import 'package:hack_it_out_demo/widgets/sign_in_widgets.dart';
+import 'package:page_transition/page_transition.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -16,6 +19,9 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
 
     return Scaffold(
+
+      resizeToAvoidBottomPadding: false,
+
       body: Container(
         width: double.infinity,
         height: double.infinity,
@@ -48,54 +54,8 @@ class _LoginState extends State<Login> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [                  
-                    Container(
-                      padding: EdgeInsets.symmetric(horizontal: 20),
-                      width: MediaQuery.of(context).size.width,
-                      height: 50,                      
-                      decoration: BoxDecoration(                        
-                        border: Border.all(width: 1, color: Colors.black45),
-                        borderRadius: BorderRadius.circular(18)
-                      ),
-                      child: TextFormField(
-                        controller: emailTextEditingController,
-                        validator: (email) {
-                          return RegExp(
-                                      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                                  .hasMatch(email)
-                              ? null
-                              : "Please provide a valid email id";
-                        },                      
-                        decoration: InputDecoration(
-                          hintText: "email",
-                          hintStyle: TextStyle(color: Colors.black45, fontSize: 16),
-                          border: InputBorder.none,                              
-                        ),
-                        style: TextStyle(color: Colors.black, fontSize: 16),
-                      ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.symmetric(horizontal: 20),
-                      width: MediaQuery.of(context).size.width,
-                      height: 50,                      
-                      decoration: BoxDecoration(                        
-                        border: Border.all(width: 1, color: Colors.black45),
-                        borderRadius: BorderRadius.circular(18)
-                      ),
-                      child: TextFormField(
-                        controller: passwordTextEditingController,
-                        validator: (password) {
-                                  return password.length > 6
-                                      ? null
-                                      : "Please provide a password which has more than 6 characters";
-                                },                   
-                        decoration: InputDecoration(
-                          hintText: "password",
-                          hintStyle: TextStyle(color: Colors.black45, fontSize: 16),
-                          border: InputBorder.none,                              
-                        ),
-                        style: TextStyle(color: Colors.black, fontSize: 16),
-                      ),
-                    ),
+                    emailInput(context, emailTextEditingController),
+                    passwordInput(context, passwordTextEditingController),
                     Text("Forgot Password?", style: TextStyle(color: Colors.black),)
                   ],
                 ),
@@ -103,7 +63,7 @@ class _LoginState extends State<Login> {
             ),
             GestureDetector(
               onTap: () {
-                print("Loggin in");
+                print("Logging in");
               },
               child: Container(                
                 height: 60,
@@ -120,13 +80,19 @@ class _LoginState extends State<Login> {
               ),
             ),
             Container(
-              height: 70,
+              height: 50,
               width: MediaQuery.of(context).size.width - 30,              
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text("I am a new user, "),
-                  Text("Sign Up", style: TextStyle(color: Colors.pink),),
+                  GestureDetector(
+                    onTap: () => Navigator.pushReplacement(
+                      context, PageTransition(
+                        child: ProfileType(), 
+                        type: PageTransitionType.rightToLeftWithFade,
+                        duration: Duration(milliseconds: 200)),),
+                    child: Text("Sign Up", style: TextStyle(color: Colors.pink),)),
                 ],
               ), 
             ),

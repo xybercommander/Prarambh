@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:hack_it_out_demo/SignInPages/company_signup.dart';
+import 'package:hack_it_out_demo/SignInPages/login.dart';
+import 'package:hack_it_out_demo/SignInPages/user_signup.dart';
+import 'package:page_transition/page_transition.dart';
 
 class ProfileType extends StatelessWidget {
   @override
@@ -28,68 +32,82 @@ class ProfileType extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Container(
-                  width: MediaQuery.of(context).size.width / 2 - 40,
-                  height: 320,
-                  padding: EdgeInsets.symmetric(vertical: 30, horizontal: 10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    gradient: LinearGradient(
-                      colors: [Color.fromRGBO(250, 89, 143, 1), Color.fromRGBO(253, 170, 142, 1)]
-                    )
-                  ),
-
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Icon(Icons.supervised_user_circle, color: Colors.white, size: 60,),
-                      Container(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text("Customer", style: TextStyle(
-                              color: Colors.white, fontSize: 25
-                            ),),
-                            SizedBox(height: 10),
-                            Text("Select this profile type if you are looking for services", style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 12
-                            ),)
-                          ],
-                        ),
+                GestureDetector(
+                  onTap: () => Navigator.pushReplacement(
+                      context, PageTransition(
+                        child: UserSignUp(), 
+                        type: PageTransitionType.rightToLeftWithFade,
+                        duration: Duration(milliseconds: 200)),),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width / 2 - 40,
+                    height: 320,
+                    padding: EdgeInsets.symmetric(vertical: 30, horizontal: 10),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      gradient: LinearGradient(
+                        colors: [Color.fromRGBO(250, 89, 143, 1), Color.fromRGBO(253, 170, 142, 1)]
                       )
-                    ],
+                    ),
+
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Icon(Icons.supervised_user_circle, color: Colors.white, size: 60,),
+                        Container(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("Customer", style: TextStyle(
+                                color: Colors.white, fontSize: 25
+                              ),),
+                              SizedBox(height: 10),
+                              Text("Select this profile type if you are looking for services", style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 12
+                              ),)
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ),
-                Container(
-                  padding: EdgeInsets.symmetric(vertical: 28, horizontal: 10),
-                  width: MediaQuery.of(context).size.width / 2 - 40,
-                  height: 320,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(color: Color.fromRGBO(251, 117, 142, 1), width: 3),                    
-                  ),
+                GestureDetector(
+                  onTap: () => Navigator.pushReplacement(
+                      context, PageTransition(
+                        child: CompanySignUp(), 
+                        type: PageTransitionType.rightToLeftWithFade,
+                        duration: Duration(milliseconds: 200)),),
+                  child: Container(
+                    padding: EdgeInsets.symmetric(vertical: 28, horizontal: 10),
+                    width: MediaQuery.of(context).size.width / 2 - 40,
+                    height: 320,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(color: Color.fromRGBO(251, 117, 142, 1), width: 3),                    
+                    ),
 
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Icon(Icons.design_services, color: Color.fromRGBO(251, 117, 142, 1), size: 60,),
-                      Container(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text("Company", style: TextStyle(
-                              color: Color.fromRGBO(251, 117, 142, 1), fontSize: 25
-                            ),),
-                            SizedBox(height: 10),
-                            Text("Select this profile type if you want to sell your services", style: TextStyle(
-                              color: Color.fromRGBO(251, 117, 142, 1),
-                              fontSize: 12
-                            ),)
-                          ],
-                        ),
-                      )
-                    ],
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Icon(Icons.design_services, color: Color.fromRGBO(251, 117, 142, 1), size: 60,),
+                        Container(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("Company", style: TextStyle(
+                                color: Color.fromRGBO(251, 117, 142, 1), fontSize: 25
+                              ),),
+                              SizedBox(height: 10),
+                              Text("Select this profile type if you want to sell your services", style: TextStyle(
+                                color: Color.fromRGBO(251, 117, 142, 1),
+                                fontSize: 12
+                              ),)
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 )
               ],
@@ -101,7 +119,13 @@ class ProfileType extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text("I am already a member, "),
-                  Text("Sign In", style: TextStyle(color: Colors.pink),),
+                  GestureDetector(
+                    onTap: () => Navigator.pushReplacement(
+                      context, PageTransition(
+                        child: Login(), 
+                        type: PageTransitionType.leftToRightWithFade,
+                        duration: Duration(milliseconds: 200)),),
+                    child: Text("Sign In", style: TextStyle(color: Colors.pink),)),
                 ],
               ), 
             ),

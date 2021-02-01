@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hack_it_out_demo/widgets/sign_in_widgets.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:hack_it_out_demo/SignInPages/login.dart';
 
 class CompanySignUp extends StatefulWidget {
   @override
@@ -18,6 +21,9 @@ class _CompanySignUpState extends State<CompanySignUp> {
   Widget build(BuildContext context) {
 
     return Scaffold(
+
+      resizeToAvoidBottomPadding: false,
+
       body: Container(
         width: double.infinity,
         height: double.infinity,
@@ -50,109 +56,11 @@ class _CompanySignUpState extends State<CompanySignUp> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [   
-                    Container(
-                      padding: EdgeInsets.symmetric(horizontal: 20),
-                      width: MediaQuery.of(context).size.width,
-                      height: 50,                      
-                      decoration: BoxDecoration(                        
-                        border: Border.all(width: 1, color: Colors.black45),
-                        borderRadius: BorderRadius.circular(18)
-                      ),
-                      child: TextFormField(
-                        controller: companyNameTextEditingController,                                            
-                        decoration: InputDecoration(
-                          hintText: "company name",
-                          hintStyle: TextStyle(color: Colors.black45, fontSize: 16),
-                          border: InputBorder.none,                              
-                        ),
-                        style: TextStyle(color: Colors.black, fontSize: 16),
-                      ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.symmetric(horizontal: 20),
-                      width: MediaQuery.of(context).size.width,
-                      height: 50,                      
-                      decoration: BoxDecoration(                        
-                        border: Border.all(width: 1, color: Colors.black45),
-                        borderRadius: BorderRadius.circular(18)
-                      ),
-                      child: TextFormField(
-                        controller: serviceTypeTextEditingController,                                            
-                        decoration: InputDecoration(
-                          hintText: "service type",
-                          hintStyle: TextStyle(color: Colors.black45, fontSize: 16),
-                          border: InputBorder.none,                              
-                        ),
-                        style: TextStyle(color: Colors.black, fontSize: 16),
-                      ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.symmetric(horizontal: 20),
-                      width: MediaQuery.of(context).size.width,
-                      height: 50,                      
-                      decoration: BoxDecoration(                        
-                        border: Border.all(width: 1, color: Colors.black45),
-                        borderRadius: BorderRadius.circular(18)
-                      ),
-                      child: TextFormField(
-                        controller: descriptionTextEditingController,                                            
-                        decoration: InputDecoration(
-                          hintText: "description",
-                          hintStyle: TextStyle(color: Colors.black45, fontSize: 16),
-                          border: InputBorder.none,                              
-                        ),
-                        style: TextStyle(color: Colors.black, fontSize: 16),
-                      ),
-                    ),
-                    
-                    Container(
-                      padding: EdgeInsets.symmetric(horizontal: 20),
-                      width: MediaQuery.of(context).size.width,
-                      height: 50,                      
-                      decoration: BoxDecoration(                        
-                        border: Border.all(width: 1, color: Colors.black45),
-                        borderRadius: BorderRadius.circular(18)
-                      ),
-                      child: TextFormField(
-                        controller: emailTextEditingController,
-                        validator: (email) {
-                          return RegExp(
-                                      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                                  .hasMatch(email)
-                              ? null
-                              : "Please provide a valid email id";
-                        },                      
-                        decoration: InputDecoration(
-                          hintText: "email",
-                          hintStyle: TextStyle(color: Colors.black45, fontSize: 16),
-                          border: InputBorder.none,                              
-                        ),
-                        style: TextStyle(color: Colors.black, fontSize: 16),
-                      ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.symmetric(horizontal: 20),
-                      width: MediaQuery.of(context).size.width,
-                      height: 50,                      
-                      decoration: BoxDecoration(                        
-                        border: Border.all(width: 1, color: Colors.black45),
-                        borderRadius: BorderRadius.circular(18)
-                      ),
-                      child: TextFormField(
-                        controller: passwordTextEditingController,
-                        validator: (password) {
-                                  return password.length > 6
-                                      ? null
-                                      : "Please provide a password which has more than 6 characters";
-                                },                   
-                        decoration: InputDecoration(
-                          hintText: "password",
-                          hintStyle: TextStyle(color: Colors.black45, fontSize: 16),
-                          border: InputBorder.none,                              
-                        ),
-                        style: TextStyle(color: Colors.black, fontSize: 16),
-                      ),
-                    ),                    
+                    companyNameInput(context, companyNameTextEditingController),
+                    serviceTypeInput(context, serviceTypeTextEditingController),
+                    descriptionInput(context, descriptionTextEditingController),                    
+                    emailInput(context, emailTextEditingController),
+                    passwordInput(context, passwordTextEditingController)
                   ],
                 ),
               ),
@@ -182,7 +90,13 @@ class _CompanySignUpState extends State<CompanySignUp> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text("I am already a member, "),
-                  Text("Sign In", style: TextStyle(color: Colors.pink),),
+                  GestureDetector(
+                    onTap: () => Navigator.pushReplacement(
+                      context, PageTransition(
+                        child: Login(), 
+                        type: PageTransitionType.leftToRightWithFade,
+                        duration: Duration(milliseconds: 200)),),
+                    child: Text("Sign In", style: TextStyle(color: Colors.pink),)),
                 ],
               ), 
             ),
