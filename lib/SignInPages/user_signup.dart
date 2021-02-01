@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class Login extends StatefulWidget {
+class UserSignUp extends StatefulWidget {
   @override
-  _LoginState createState() => _LoginState();
+  _UserSignUpState createState() => _UserSignUpState();
 }
 
-class _LoginState extends State<Login> {
-
+class _UserSignUpState extends State<UserSignUp> {
+  TextEditingController nameTextEditingController = new TextEditingController();
   TextEditingController emailTextEditingController = new TextEditingController();
   TextEditingController passwordTextEditingController = new TextEditingController();
 
@@ -31,15 +31,15 @@ class _LoginState extends State<Login> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Welcome,", style: TextStyle(
+                  Text("Create Account,,", style: TextStyle(
                     fontSize: 30, fontWeight: FontWeight.bold),),
-                  Text("Sign in to continue!", style: TextStyle(
+                  Text("Sign up to get started!", style: TextStyle(
                     fontSize: 20, fontWeight: FontWeight.bold, color: Colors.grey),),
                 ],
               ), 
             ),
             Container(
-              height: 150,
+              height: 200,
               width: MediaQuery.of(context).size.width - 30,              
               // color: Colors.redAccent,
               child: Form(
@@ -47,7 +47,25 @@ class _LoginState extends State<Login> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [                  
+                  children: [   
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      width: MediaQuery.of(context).size.width,
+                      height: 50,                      
+                      decoration: BoxDecoration(                        
+                        border: Border.all(width: 1, color: Colors.black45),
+                        borderRadius: BorderRadius.circular(18)
+                      ),
+                      child: TextFormField(
+                        controller: nameTextEditingController,                                            
+                        decoration: InputDecoration(
+                          hintText: "full name",
+                          hintStyle: TextStyle(color: Colors.black45, fontSize: 16),
+                          border: InputBorder.none,                              
+                        ),
+                        style: TextStyle(color: Colors.black, fontSize: 16),
+                      ),
+                    ),               
                     Container(
                       padding: EdgeInsets.symmetric(horizontal: 20),
                       width: MediaQuery.of(context).size.width,
@@ -115,7 +133,7 @@ class _LoginState extends State<Login> {
                   )
                 ),
                 child: Center(
-                  child: Text("Login", style: TextStyle(color: Colors.white, fontSize: 20),),
+                  child: Text("Sign Up", style: TextStyle(color: Colors.white, fontSize: 20),),
                 ),
               ),
             ),
@@ -125,8 +143,8 @@ class _LoginState extends State<Login> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("I am a new user, "),
-                  Text("Sign Up", style: TextStyle(color: Colors.pink),),
+                  Text("I am already a member, "),
+                  Text("Sign In", style: TextStyle(color: Colors.pink),),
                 ],
               ), 
             ),
