@@ -64,7 +64,7 @@ class _UserSignUpState extends State<UserSignUp> {
             ),
             GestureDetector(
               onTap: () {
-                print("Log in");
+                print("Logging in");
               },
               child: Container(                
                 height: 60,
