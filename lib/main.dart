@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hack_it_out_demo/SignInPages/profile_type.dart';
 import 'package:hack_it_out_demo/SignInPages/user_signup.dart';
 import 'SignInPages/login.dart';
 // import 'package:hack_it_out_demo/views/mainpage.dart';
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'Varela'
       ),      
-      home: UserSignUp(),
+      home: ProfileType(),
     );
   }
 }

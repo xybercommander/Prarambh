@@ -31,7 +31,7 @@ class _UserSignUpState extends State<UserSignUp> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Create Account,,", style: TextStyle(
+                  Text("Create Account,", style: TextStyle(
                     fontSize: 30, fontWeight: FontWeight.bold),),
                   Text("Sign up to get started!", style: TextStyle(
                     fontSize: 20, fontWeight: FontWeight.bold, color: Colors.grey),),
