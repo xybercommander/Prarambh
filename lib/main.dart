@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hack_it_out_demo/SignInPages/company_signup.dart';
 import 'package:hack_it_out_demo/SignInPages/profile_type.dart';
 import 'package:hack_it_out_demo/SignInPages/user_signup.dart';
 import 'SignInPages/login.dart';
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'Varela'
       ),      
-      home: ProfileType(),
+      home: CompanySignUp(),
     );
   }
 }
