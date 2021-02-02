@@ -1,5 +1,8 @@
+import 'package:hack_it_out_demo/modules/customer_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:hack_it_out_demo/SignInPages/login.dart';
+import 'package:hack_it_out_demo/helper/auth.dart';
+import 'package:hack_it_out_demo/views/user_mainpage.dart';
 import 'package:hack_it_out_demo/widgets/sign_in_widgets.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -13,14 +16,38 @@ class _UserSignUpState extends State<UserSignUp> {
   TextEditingController emailTextEditingController = new TextEditingController();
   TextEditingController passwordTextEditingController = new TextEditingController();
 
+  AuthMethods authMethods = new AuthMethods();
+
   final formKey = GlobalKey<FormState>();
 
   bool isLoading = false;  
   bool showPassword = false;
+  
 
 
+  signUp() {
 
-  // signUp()
+    if(formKey.currentState.validate()) {
+      Map<String, String> userInfo = {
+        'fullName': nameTextEditingController.text,
+        'email': emailTextEditingController.text,        
+      };
+
+      authMethods.signUpWithEmailAndPassword
+        (emailTextEditingController.text, passwordTextEditingController.text).then((value) {
+          
+          CustomerConstants.full_name = nameTextEditingController.text;
+
+
+          Navigator.pushReplacement(context, PageTransition(
+            child: UserMainPage(),
+            type: PageTransitionType.rightToLeftWithFade,
+            duration: Duration(milliseconds: 300)
+          ));
+        });
+    }
+
+  }
 
 
 
@@ -101,7 +128,13 @@ class _UserSignUpState extends State<UserSignUp> {
                   )
                 ),
                 child: Center(
-                  child: Text("Sign Up", style: TextStyle(color: Colors.white, fontSize: 20),),
+                  child: GestureDetector(
+                    onTap: () {
+                      print("Trying to signup");
+                      signUp();
+                    },
+                    child: Text("Sign Up", style: TextStyle(color: Colors.white, fontSize: 20),)
+                  ),
                 ),
               ),
             ),

@@ -1,5 +1,5 @@
-import 'package:hack_it_out_demo/modules/profile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:hack_it_out_demo/modules/profile.dart';
 
 class AuthMethods {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -11,7 +11,7 @@ class AuthMethods {
 
 
   // Sign in method
-  Future signInWithEmailAndPassword(String email, String password) async {
+  signInWithEmailAndPassword(String email, String password) async {
     try {
       UserCredential result = await _auth.signInWithEmailAndPassword(email: email, password: password);
       User user = result.user;

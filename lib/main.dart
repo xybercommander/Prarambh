@@ -3,9 +3,12 @@ import 'package:hack_it_out_demo/SignInPages/company_signup.dart';
 import 'package:hack_it_out_demo/SignInPages/profile_type.dart';
 import 'package:hack_it_out_demo/SignInPages/user_signup.dart';
 import 'SignInPages/login.dart';
+import 'package:firebase_core/firebase_core.dart';
 // import 'package:hack_it_out_demo/views/mainpage.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 

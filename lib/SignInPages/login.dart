@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hack_it_out_demo/SignInPages/profile_type.dart';
 import 'package:hack_it_out_demo/widgets/sign_in_widgets.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:hack_it_out_demo/helper/auth.dart';
+import 'package:hack_it_out_demo/views/user_mainpage.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -13,11 +15,32 @@ class _LoginState extends State<Login> {
   TextEditingController emailTextEditingController = new TextEditingController();
   TextEditingController passwordTextEditingController = new TextEditingController();
 
+  AuthMethods authMethods = new AuthMethods();
+
   final formKey = GlobalKey<FormState>();
 
   bool showPassword = false;
 
   
+
+  signIn() {
+    if(formKey.currentState.validate()) {
+      authMethods.signInWithEmailAndPassword(emailTextEditingController.text, passwordTextEditingController.text).then((value) {
+        if(value != null) {
+          print('$value');
+
+          Navigator.pushReplacement(context, PageTransition(
+            child: UserMainPage(),
+            type: PageTransitionType.rightToLeftWithFade,
+            duration: Duration(milliseconds: 300)
+          ));
+        } else {
+          print('Error');
+        }
+      });        
+    }
+  }
+
 
 
   // UI of the Login Page
@@ -87,6 +110,8 @@ class _LoginState extends State<Login> {
             GestureDetector(
               onTap: () {
                 print("Logging in");
+                signIn();
+                // print('Logged in');
               },
               child: Container(                
                 height: 60,
