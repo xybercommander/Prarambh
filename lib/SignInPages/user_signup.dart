@@ -36,7 +36,7 @@ class _UserSignUpState extends State<UserSignUp> {
       authMethods.signUpWithEmailAndPassword
         (emailTextEditingController.text, passwordTextEditingController.text).then((value) {
           
-          CustomerConstants.full_name = nameTextEditingController.text;
+          CustomerConstants.fullName = nameTextEditingController.text;
 
 
           Navigator.pushReplacement(context, PageTransition(
