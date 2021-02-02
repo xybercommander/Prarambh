@@ -15,6 +15,12 @@ class _LoginState extends State<Login> {
 
   final formKey = GlobalKey<FormState>();
 
+  bool showPassword = false;
+
+  
+
+
+  // UI of the Login Page
   @override
   Widget build(BuildContext context) {
 
@@ -45,7 +51,7 @@ class _LoginState extends State<Login> {
               ), 
             ),
             Container(
-              height: 150,
+              height: 180,
               width: MediaQuery.of(context).size.width - 30,              
               // color: Colors.redAccent,
               child: Form(
@@ -55,8 +61,25 @@ class _LoginState extends State<Login> {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [                  
                     emailInput(context, emailTextEditingController),
-                    passwordInput(context, passwordTextEditingController),
-                    Text("Forgot Password?", style: TextStyle(color: Colors.black),)
+                    passwordInput(context, passwordTextEditingController, showPassword),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Checkbox(
+                          value: showPassword, 
+                          onChanged: (flag) {
+                            setState(() {
+                              showPassword = !showPassword;
+                            });                            
+                          },
+                          checkColor: Colors.white,
+                          activeColor: Color.fromRGBO(250, 89, 143, 1),
+                        ),
+                        Text("Show Password"),
+                        SizedBox(width: MediaQuery.of(context).size.width / 2 - 110),
+                        Text("Forgot Password?", style: TextStyle(color: Colors.black),),
+                      ],
+                    )
                   ],
                 ),
               ),

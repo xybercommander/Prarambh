@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "529311848088",
+    "project_id": "hack-it-out-demo-9c9cd",
+    "storage_bucket": "hack-it-out-demo-9c9cd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:529311848088:android:36b1e837cb7c27034222ed",
+        "android_client_info": {
+          "package_name": "com.example.hack_it_out_demo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "529311848088-q1tn8nshqddqp2iu495f9h7od16bmb21.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCI8mtVvlfE_s3CwblVQsoddTSnE13A1DM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "529311848088-q1tn8nshqddqp2iu495f9h7od16bmb21.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

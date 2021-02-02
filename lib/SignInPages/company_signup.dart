@@ -17,6 +17,13 @@ class _CompanySignUpState extends State<CompanySignUp> {
 
   final formKey = GlobalKey<FormState>();
 
+
+  bool showPassword = false;
+
+
+
+
+
   @override
   Widget build(BuildContext context) {
 
@@ -47,7 +54,7 @@ class _CompanySignUpState extends State<CompanySignUp> {
               ), 
             ),
             Container(
-              height: 300,
+              height: 330,
               width: MediaQuery.of(context).size.width - 30,              
               // color: Colors.redAccent,
               child: Form(
@@ -60,7 +67,23 @@ class _CompanySignUpState extends State<CompanySignUp> {
                     serviceTypeInput(context, serviceTypeTextEditingController),
                     descriptionInput(context, descriptionTextEditingController),                    
                     emailInput(context, emailTextEditingController),
-                    passwordInput(context, passwordTextEditingController)
+                    passwordInput(context, passwordTextEditingController, showPassword),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Checkbox(
+                          value: showPassword, 
+                          onChanged: (flag) {
+                            setState(() {
+                              showPassword = !showPassword;
+                            });                            
+                          },
+                          checkColor: Colors.white,
+                          activeColor: Color.fromRGBO(250, 89, 143, 1),
+                        ),
+                        Text("Show Password"),                                                
+                      ],
+                    )
                   ],
                 ),
               ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+
+
 Widget emailInput(context, TextEditingController textEditingController) {
   return Container(
     padding: EdgeInsets.symmetric(horizontal: 20),
@@ -28,8 +30,10 @@ Widget emailInput(context, TextEditingController textEditingController) {
   );
 }
 
-Widget passwordInput(context, TextEditingController textEditingController) {
-  return Container(
+
+
+Widget passwordInput(context, TextEditingController textEditingController, bool showPassword) {
+  return Container(    
     padding: EdgeInsets.symmetric(horizontal: 20),
     width: MediaQuery.of(context).size.width,
     height: 50,                      
@@ -39,6 +43,7 @@ Widget passwordInput(context, TextEditingController textEditingController) {
     ),
     child: TextFormField(
       controller: textEditingController,
+      obscureText: showPassword ? false : true,
       validator: (password) {
                 return password.length > 6
                     ? null
@@ -53,6 +58,8 @@ Widget passwordInput(context, TextEditingController textEditingController) {
     ),
   );
 }
+
+
 
 Widget companyNameInput(context, TextEditingController textEditingController) {
   return Container(
@@ -75,6 +82,8 @@ Widget companyNameInput(context, TextEditingController textEditingController) {
   );
 }
 
+
+
 Widget fullNameInput(context, TextEditingController textEditingController) {
   return Container(
     padding: EdgeInsets.symmetric(horizontal: 20),
@@ -96,6 +105,8 @@ Widget fullNameInput(context, TextEditingController textEditingController) {
   );
 }
 
+
+
 Widget descriptionInput(context, TextEditingController textEditingController) {
   return Container(
     padding: EdgeInsets.symmetric(horizontal: 20),
@@ -116,6 +127,8 @@ Widget descriptionInput(context, TextEditingController textEditingController) {
     ),
   );
 }
+
+
 
 Widget serviceTypeInput(context, TextEditingController textEditingController) {
   return Container(

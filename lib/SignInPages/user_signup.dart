@@ -15,6 +15,16 @@ class _UserSignUpState extends State<UserSignUp> {
 
   final formKey = GlobalKey<FormState>();
 
+  bool isLoading = false;  
+  bool showPassword = false;
+
+
+
+  // signUp()
+
+
+
+
   @override
   Widget build(BuildContext context) {
 
@@ -45,7 +55,7 @@ class _UserSignUpState extends State<UserSignUp> {
               ), 
             ),
             Container(
-              height: 200,
+              height: 230,
               width: MediaQuery.of(context).size.width - 30,              
               // color: Colors.redAccent,
               child: Form(
@@ -56,8 +66,23 @@ class _UserSignUpState extends State<UserSignUp> {
                   children: [   
                     fullNameInput(context, nameTextEditingController),
                     emailInput(context, emailTextEditingController),
-                    passwordInput(context, passwordTextEditingController),
-                    Text("Forgot Password?", style: TextStyle(color: Colors.black),)
+                    passwordInput(context, passwordTextEditingController, showPassword),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Checkbox(
+                          value: showPassword, 
+                          onChanged: (flag) {
+                            setState(() {
+                              showPassword = !showPassword;
+                            });                            
+                          },
+                          checkColor: Colors.white,
+                          activeColor: Color.fromRGBO(250, 89, 143, 1),
+                        ),
+                        Text("Show Password"),                                                
+                      ],
+                    )
                   ],
                 ),
               ),
