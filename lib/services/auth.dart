@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:hack_it_out_demo/modules/profile.dart';
+import 'package:prarambh/modules/profile.dart';
 
 class AuthMethods {
   final FirebaseAuth _auth = FirebaseAuth.instance;

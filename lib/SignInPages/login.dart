@@ -1,12 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:hack_it_out_demo/SignInPages/auth_page.dart';
-import 'package:hack_it_out_demo/SignInPages/profile_type.dart';
-import 'package:hack_it_out_demo/services/database.dart';
-import 'package:hack_it_out_demo/widgets/sign_in_widgets.dart';
+import 'package:prarambh/SignInPages/auth_page.dart';
+import 'package:prarambh/SignInPages/profile_type.dart';
+import 'package:prarambh/services/database.dart';
+import 'package:prarambh/widgets/sign_in_widgets.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:hack_it_out_demo/services/auth.dart';
-import 'package:hack_it_out_demo/views/user_mainpage.dart';
+import 'package:prarambh/services/auth.dart';
+import 'package:prarambh/views/user_mainpage.dart';
 
 class Login extends StatefulWidget {
   @override

@@ -1,10 +1,10 @@
-import 'package:hack_it_out_demo/modules/customer_constants.dart';
+import 'package:prarambh/modules/customer_constants.dart';
 import 'package:flutter/material.dart';
-import 'package:hack_it_out_demo/SignInPages/login.dart';
-import 'package:hack_it_out_demo/services/auth.dart';
-import 'package:hack_it_out_demo/services/database.dart';
-import 'package:hack_it_out_demo/views/user_mainpage.dart';
-import 'package:hack_it_out_demo/widgets/sign_in_widgets.dart';
+import 'package:prarambh/SignInPages/login.dart';
+import 'package:prarambh/services/auth.dart';
+import 'package:prarambh/services/database.dart';
+import 'package:prarambh/views/user_mainpage.dart';
+import 'package:prarambh/widgets/sign_in_widgets.dart';
 import 'package:page_transition/page_transition.dart';
 
 class UserSignUp extends StatefulWidget {

@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:hack_it_out_demo/modules/company_constants.dart';
-import 'package:hack_it_out_demo/modules/customer_constants.dart';
-import 'package:hack_it_out_demo/services/database.dart';
-import 'package:hack_it_out_demo/views/company_mainpage.dart';
-import 'package:hack_it_out_demo/views/user_mainpage.dart';
+import 'package:prarambh/modules/company_constants.dart';
+import 'package:prarambh/modules/customer_constants.dart';
+import 'package:prarambh/services/database.dart';
+import 'package:prarambh/views/company_mainpage.dart';
+import 'package:prarambh/views/user_mainpage.dart';
 import 'package:page_transition/page_transition.dart';
 
 class AuthPage extends StatefulWidget {

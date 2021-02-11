@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:hack_it_out_demo/modules/customer_constants.dart';
-import 'package:hack_it_out_demo/services/database.dart';
+import 'package:prarambh/modules/customer_constants.dart';
+import 'package:prarambh/services/database.dart';
 
 class UserMainPage extends StatefulWidget {    
   @override
