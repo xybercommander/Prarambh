@@ -1,7 +1,8 @@
 import 'package:hack_it_out_demo/modules/customer_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:hack_it_out_demo/SignInPages/login.dart';
-import 'package:hack_it_out_demo/helper/auth.dart';
+import 'package:hack_it_out_demo/services/auth.dart';
+import 'package:hack_it_out_demo/services/database.dart';
 import 'package:hack_it_out_demo/views/user_mainpage.dart';
 import 'package:hack_it_out_demo/widgets/sign_in_widgets.dart';
 import 'package:page_transition/page_transition.dart';
@@ -17,6 +18,7 @@ class _UserSignUpState extends State<UserSignUp> {
   TextEditingController passwordTextEditingController = new TextEditingController();
 
   AuthMethods authMethods = new AuthMethods();
+  DatabaseMethods databaseMethods = new DatabaseMethods();
 
   final formKey = GlobalKey<FormState>();
 
@@ -28,15 +30,19 @@ class _UserSignUpState extends State<UserSignUp> {
   signUp() {
 
     if(formKey.currentState.validate()) {
-      Map<String, String> userInfo = {
+      Map<String, dynamic> userInfo = {
         'fullName': nameTextEditingController.text,
-        'email': emailTextEditingController.text,        
+        'email': emailTextEditingController.text, 
+        'isCompany': false       
       };
 
       authMethods.signUpWithEmailAndPassword
         (emailTextEditingController.text, passwordTextEditingController.text).then((value) {
           
           CustomerConstants.fullName = nameTextEditingController.text;
+
+
+          databaseMethods.uploadUserInfo(userInfo);
 
 
           Navigator.pushReplacement(context, PageTransition(

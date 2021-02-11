@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:hack_it_out_demo/modules/company_constants.dart';
+import 'package:hack_it_out_demo/services/auth.dart';
+import 'package:hack_it_out_demo/services/database.dart';
+import 'package:hack_it_out_demo/views/company_mainpage.dart';
 import 'package:hack_it_out_demo/widgets/sign_in_widgets.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:hack_it_out_demo/SignInPages/login.dart';
@@ -16,14 +20,43 @@ class _CompanySignUpState extends State<CompanySignUp> {
   TextEditingController passwordTextEditingController = new TextEditingController();
 
   final formKey = GlobalKey<FormState>();
-
-
   bool showPassword = false;
+  String serviceTypeValue = 'Developer';
+
+  AuthMethods authMethods = new AuthMethods();
+  DatabaseMethods databaseMethods = new DatabaseMethods();
 
 
+  signUp() {
+    if(formKey.currentState.validate()) {
+      Map<String, dynamic> companyMap = {
+        'companyName' : companyNameTextEditingController.text,
+        'description' : descriptionTextEditingController.text,
+        'email' : emailTextEditingController.text,
+        'serviceType' : CompanyConstants.serviceType,
+        'isCompany' : true
+      };
 
+      authMethods.signUpWithEmailAndPassword(emailTextEditingController.text, passwordTextEditingController.text).then((value) {
+        CompanyConstants.companyName = companyNameTextEditingController.text;
+        CompanyConstants.description = descriptionTextEditingController.text;
+        CompanyConstants.email = emailTextEditingController.text;
+        // Company service type constants is already saved in signin widgets
 
+        databaseMethods.uploadUserInfo(companyMap);
 
+        Navigator.pushReplacement(context, PageTransition(
+          child: CompanyMainPage(),
+          type: PageTransitionType.rightToLeftWithFade,
+          duration: Duration(milliseconds: 300)
+        ));
+      });
+
+      
+    }
+  }
+
+  // UI of the Page
   @override
   Widget build(BuildContext context) {
 
@@ -54,17 +87,22 @@ class _CompanySignUpState extends State<CompanySignUp> {
               ), 
             ),
             Container(
-              height: 330,
+              height: 350,
               width: MediaQuery.of(context).size.width - 30,              
-              // color: Colors.redAccent,
               child: Form(
                 key: formKey,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [   
                     companyNameInput(context, companyNameTextEditingController),
-                    serviceTypeInput(context, serviceTypeTextEditingController),
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 15),
+                      child: Text('Select a service type', textAlign: TextAlign.left, style: TextStyle(
+                        color: Colors.black45
+                      ),),
+                    ),
+                    serviceTypeInput(context),                    
                     descriptionInput(context, descriptionTextEditingController),                    
                     emailInput(context, emailTextEditingController),
                     passwordInput(context, passwordTextEditingController, showPassword),
@@ -90,7 +128,7 @@ class _CompanySignUpState extends State<CompanySignUp> {
             ),
             GestureDetector(
               onTap: () {
-                print("Loggin in");
+                signUp();
               },
               child: Container(                
                 height: 60,
@@ -126,6 +164,41 @@ class _CompanySignUpState extends State<CompanySignUp> {
           ],
         ),
       )
+    );
+  }
+
+
+
+  serviceTypeInput(context) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 20),
+      width: MediaQuery.of(context).size.width,
+      height: 50,                      
+      decoration: BoxDecoration(                        
+        border: Border.all(width: 1, color: Colors.black45),
+        borderRadius: BorderRadius.circular(18)
+      ),
+      child: DropdownButton(
+        isExpanded: true,
+        underline: SizedBox(),
+
+        style: TextStyle(color: Colors.black45, fontFamily: 'Varela', fontSize: 16),
+        icon: Icon(Icons.arrow_drop_down_outlined),
+        value: '$serviceTypeValue',      
+        items: ['Developer', 'Designer', 'House Cleaning']
+          .map<DropdownMenuItem<String>>((String value) {
+            return DropdownMenuItem<String>(
+              value: value,            
+              child: Text(value),
+            );
+          }).toList(),
+        onChanged: (value) {
+          CompanyConstants.serviceType = value;
+          setState(() {
+            serviceTypeValue = value;
+          });
+        },
+      ),
     );
   }
 }

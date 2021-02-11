@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hack_it_out_demo/modules/company_constants.dart';
 
 
 
@@ -120,29 +121,6 @@ Widget descriptionInput(context, TextEditingController textEditingController) {
       controller: textEditingController,                                            
       decoration: InputDecoration(
         hintText: "description",
-        hintStyle: TextStyle(color: Colors.black45, fontSize: 16),
-        border: InputBorder.none,                              
-      ),
-      style: TextStyle(color: Colors.black, fontSize: 16),
-    ),
-  );
-}
-
-
-
-Widget serviceTypeInput(context, TextEditingController textEditingController) {
-  return Container(
-    padding: EdgeInsets.symmetric(horizontal: 20),
-    width: MediaQuery.of(context).size.width,
-    height: 50,                      
-    decoration: BoxDecoration(                        
-      border: Border.all(width: 1, color: Colors.black45),
-      borderRadius: BorderRadius.circular(18)
-    ),
-    child: TextFormField(
-      controller: textEditingController,                                            
-      decoration: InputDecoration(
-        hintText: "service type",
         hintStyle: TextStyle(color: Colors.black45, fontSize: 16),
         border: InputBorder.none,                              
       ),

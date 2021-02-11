@@ -1,8 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:hack_it_out_demo/SignInPages/profile_type.dart';
+import 'package:hack_it_out_demo/services/database.dart';
 import 'package:hack_it_out_demo/widgets/sign_in_widgets.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:hack_it_out_demo/helper/auth.dart';
+import 'package:hack_it_out_demo/services/auth.dart';
 import 'package:hack_it_out_demo/views/user_mainpage.dart';
 
 class Login extends StatefulWidget {
@@ -16,27 +18,46 @@ class _LoginState extends State<Login> {
   TextEditingController passwordTextEditingController = new TextEditingController();
 
   AuthMethods authMethods = new AuthMethods();
+  DatabaseMethods databaseMethods = new DatabaseMethods();
+  QuerySnapshot snapshotUserInfo;
+  Stream<QuerySnapshot> userStream;
 
   final formKey = GlobalKey<FormState>();
 
   bool showPassword = false;
 
+
+  // onLogin() async {
+  //   userStream = await databaseMethods.getUserInfoByEmail(emailTextEditingController.text);    
+  // }
+
+  // Widget searchUserInfo() {
+  //   return StreamBuilder(
+  //     stream: userStream,
+  //     builder: (context, snapshot) {
+  //       return Column(
+  //         crossAxisAlignment: CrossAxisAlignment.stretch,
+  //         mainAxisAlignment: Main,
+  //         children: [],
+  //       );
+  //     },
+  //   );
+  // }
   
 
-  signIn() {
-    if(formKey.currentState.validate()) {
+  signIn() async {
+    if(formKey.currentState.validate()) {            
       authMethods.signInWithEmailAndPassword(emailTextEditingController.text, passwordTextEditingController.text).then((value) {
         if(value != null) {
-          print('$value');
-
-          Navigator.pushReplacement(context, PageTransition(
-            child: UserMainPage(),
-            type: PageTransitionType.rightToLeftWithFade,
-            duration: Duration(milliseconds: 300)
-          ));
+          print('$value');          
         } else {
           print('Error');
         }
+
+        Navigator.pushReplacement(context, PageTransition(
+          child: UserMainPage(email: emailTextEditingController.text,),          
+          type: PageTransitionType.fade
+        ));
       });        
     }
   }
@@ -144,6 +165,18 @@ class _LoginState extends State<Login> {
                 ],
               ), 
             ),
+
+            // StreamBuilder(
+            //   stream: userStream,
+            //   builder: (context, snapshot) {
+            //     if(snapshot != null) {
+            //       print(snapshot.data.document);
+            //     }
+            //     return Container(
+
+            //     );
+            //   },
+            // )
           ],
         ),
       )
