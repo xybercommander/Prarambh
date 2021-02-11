@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:hack_it_out_demo/SignInPages/auth_page.dart';
 import 'package:hack_it_out_demo/SignInPages/profile_type.dart';
 import 'package:hack_it_out_demo/services/database.dart';
 import 'package:hack_it_out_demo/widgets/sign_in_widgets.dart';
@@ -55,7 +56,7 @@ class _LoginState extends State<Login> {
         }
 
         Navigator.pushReplacement(context, PageTransition(
-          child: UserMainPage(email: emailTextEditingController.text,),          
+          child: AuthPage(emailTextEditingController.text),          
           type: PageTransitionType.fade
         ));
       });        

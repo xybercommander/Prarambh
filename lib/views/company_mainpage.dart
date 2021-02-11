@@ -12,7 +12,7 @@ class _CompanyMainPageState extends State<CompanyMainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text("Company Main Page"),
+        child: Text(CompanyConstants.companyName),
       ),
     );
   }

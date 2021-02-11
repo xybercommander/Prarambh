@@ -122,7 +122,8 @@ class _UserSignUpState extends State<UserSignUp> {
             ),
             GestureDetector(
               onTap: () {
-                print("Logging in");
+                print("Trying to signup");
+                signUp();
               },
               child: Container(                
                 height: 60,
@@ -134,13 +135,7 @@ class _UserSignUpState extends State<UserSignUp> {
                   )
                 ),
                 child: Center(
-                  child: GestureDetector(
-                    onTap: () {
-                      print("Trying to signup");
-                      signUp();
-                    },
-                    child: Text("Sign Up", style: TextStyle(color: Colors.white, fontSize: 20),)
-                  ),
+                  child: Text("Sign Up", style: TextStyle(color: Colors.white, fontSize: 20),),
                 ),
               ),
             ),
