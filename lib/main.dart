@@ -19,9 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Hack it out App Demo',
-      theme: ThemeData(
-        fontFamily: 'Varela'
-      ),      
+      theme: ThemeData(fontFamily: 'Montserrat-Bold'),
       home: SplashScreen(),
     );
   }

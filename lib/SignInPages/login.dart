@@ -26,6 +26,7 @@ class _LoginState extends State<Login> {
   final formKey = GlobalKey<FormState>();
 
   bool showPassword = false;
+  bool darkMode = false;
 
   onLogin() async {
     userStream = await databaseMethods
@@ -61,7 +62,7 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
         //resizeToAvoidBottomPadding: false,
-        backgroundColor: Colors.white,
+        backgroundColor: darkMode ? Colors.grey[850] : Colors.white,
         body: Stack(
           children: [
             Container(
@@ -90,18 +91,20 @@ class _LoginState extends State<Login> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Welcome,",
+                          "Let's sign you in,",
                           style: TextStyle(
-                              fontSize: 30,
+                              height: 4,
+                              fontSize: 50,
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                         ),
                         Text(
-                          "Log in/Sign in to continue!",
+                          "Welcome Back. You've been missed",
                           style: TextStyle(
                               fontSize: 20,
+                              height: 2,
                               fontWeight: FontWeight.bold,
-                              color: Colors.white),
+                              color: Colors.black),
                         ),
                       ],
                     ),
@@ -159,7 +162,22 @@ class _LoginState extends State<Login> {
                       height: 60,
                       width: MediaQuery.of(context).size.width - 30,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
+                          borderRadius: BorderRadius.all(Radius.circular(50)),
+                          boxShadow: [
+                            BoxShadow(
+                                color: darkMode
+                                    ? Colors.grey[850]
+                                    : Colors.grey[600],
+                                offset: Offset(4.0, 4.0),
+                                blurRadius: 15.0,
+                                spreadRadius: 1.0),
+                            BoxShadow(
+                                color:
+                                    darkMode ? Colors.grey[800] : Colors.white,
+                                offset: Offset(-4.0, -4.0),
+                                blurRadius: 15.0,
+                                spreadRadius: 1.0)
+                          ],
                           gradient: LinearGradient(colors: [
                             Color.fromRGBO(143, 148, 251, 1),
                             Color.fromRGBO(143, 148, 251, .6)
@@ -176,15 +194,15 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                   Container(
-                    color: Colors.black,
-                    height: 50,
+                    color: Colors.white,
+                    height: 60,
                     width: MediaQuery.of(context).size.width - 30,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
                           "I am a new user, ",
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: Colors.black),
                         ),
                         GestureDetector(
                             onTap: () => Navigator.pushReplacement(
