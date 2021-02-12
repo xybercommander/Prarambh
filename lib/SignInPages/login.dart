@@ -216,7 +216,7 @@ class _LoginState extends State<Login> {
                                 ),
                             child: Text(
                               "Sign Up",
-                              style: TextStyle(color: Colors.pink[200]),
+                              style: TextStyle(color: Colors.green[600]),
                             )),
                       ],
                     ),

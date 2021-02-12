@@ -6,6 +6,7 @@ import 'package:page_transition/page_transition.dart';
 
 class ProfileType extends StatelessWidget {
   @override
+  bool darkMode = false;
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
@@ -52,7 +53,21 @@ class ProfileType extends StatelessWidget {
                     height: 320,
                     padding: EdgeInsets.symmetric(vertical: 30, horizontal: 10),
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                        boxShadow: [
+                          BoxShadow(
+                              color: darkMode
+                                  ? Colors.grey[900]
+                                  : Colors.grey[600],
+                              offset: Offset(4.0, 4.0),
+                              blurRadius: 15.0,
+                              spreadRadius: 1.0),
+                          BoxShadow(
+                              color: darkMode ? Colors.grey[800] : Colors.white,
+                              offset: Offset(-4.0, -4.0),
+                              blurRadius: 15.0,
+                              spreadRadius: 1.0)
+                        ],
                         gradient: LinearGradient(colors: [
                           Color.fromRGBO(143, 148, 251, 1),
                           Color.fromRGBO(143, 148, 251, .6)
@@ -100,7 +115,20 @@ class ProfileType extends StatelessWidget {
                     width: MediaQuery.of(context).size.width / 2 - 40,
                     height: 320,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                      boxShadow: [
+                        BoxShadow(
+                            color:
+                                darkMode ? Colors.grey[900] : Colors.grey[600],
+                            offset: Offset(4.0, 4.0),
+                            blurRadius: 15.0,
+                            spreadRadius: 1.0),
+                        BoxShadow(
+                            color: darkMode ? Colors.grey[800] : Colors.white,
+                            offset: Offset(-4.0, -4.0),
+                            blurRadius: 15.0,
+                            spreadRadius: 1.0)
+                      ],
                       border: Border.all(
                           color: Color.fromRGBO(143, 148, 251, 1), width: 3),
                     ),
@@ -155,7 +183,7 @@ class ProfileType extends StatelessWidget {
                           ),
                       child: Text(
                         "Sign In",
-                        style: TextStyle(color: Colors.pink),
+                        style: TextStyle(color: Colors.green[600]),
                       )),
                 ],
               ),
