@@ -202,8 +202,13 @@ class _CompanySignUpState extends State<CompanySignUp> {
             color: Colors.black45, fontFamily: 'Varela', fontSize: 16),
         icon: Icon(Icons.arrow_drop_down_outlined),
         value: '$serviceTypeValue',
-        items: ['Developer', 'Designer', 'House Cleaning']
-            .map<DropdownMenuItem<String>>((String value) {
+        items: [
+          'Developer',
+          'Designer',
+          'House Cleaning',
+          'Grocery Store',
+          'Restraunt'
+        ].map<DropdownMenuItem<String>>((String value) {
           return DropdownMenuItem<String>(
             value: value,
             child: Text(value),
