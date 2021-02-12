@@ -153,18 +153,6 @@ class _LoginState extends State<Login> {
                 ],
               ), 
             ),
-
-            // StreamBuilder(
-            //   stream: userStream,
-            //   builder: (context, snapshot) {
-            //     if(snapshot != null) {
-            //       print(snapshot.data.document);
-            //     }
-            //     return Container(
-
-            //     );
-            //   },
-            // )
           ],
         ),
       )

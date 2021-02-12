@@ -36,7 +36,3 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 }
-
-// git branch -m Samrat master
-// git fetch origin
-// git branch -u origin/master master

@@ -6,6 +6,7 @@ import 'package:hack_it_out_demo/modules/customer_constants.dart';
 import 'package:hack_it_out_demo/services/database.dart';
 import 'package:hack_it_out_demo/views/CompanyPages/company_mainpage.dart';
 import 'package:flare_dart/actor.dart';
+import 'package:hack_it_out_demo/views/company_navigator.dart';
 import 'package:hack_it_out_demo/views/customer_navigator.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -54,7 +55,7 @@ class _AuthPageState extends State<AuthPage> {
               CompanyConstants.companyName = documentSnapshot['companyName'];
               WidgetsBinding.instance.addPostFrameCallback((_) {
                 Navigator.pushReplacement(context, PageTransition(
-                  child: CompanyMainPage(),
+                  child: CompanyNavigationPage(),
                   type: PageTransitionType.fade
                 ));
               });

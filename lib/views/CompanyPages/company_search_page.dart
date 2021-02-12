@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:hack_it_out_demo/modules/company_constants.dart';
 
-class CompanyMainPage extends StatefulWidget {
+class CompanySearchPage extends StatefulWidget {
   @override
-  _CompanyMainPageState createState() => _CompanyMainPageState();
+  _CompanySearchPageState createState() => _CompanySearchPageState();
 }
 
-class _CompanyMainPageState extends State<CompanyMainPage> {
+class _CompanySearchPageState extends State<CompanySearchPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Company Main Page'),
+        title: Text('Company Search Page'),
         centerTitle: true,
         flexibleSpace: Container(
           decoration: BoxDecoration(
@@ -25,7 +25,7 @@ class _CompanyMainPageState extends State<CompanyMainPage> {
       ),
 
       body: Center(
-        child: Text(CompanyConstants.companyName),
+        child: Text('Company Search Page'),
       ),
     );
   }
