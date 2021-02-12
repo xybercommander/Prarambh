@@ -193,9 +193,10 @@ class _LoginState extends State<Login> {
                       ),
                     ),
                   ),
+                  SizedBox(height: 17),
                   Container(
                     color: Colors.white,
-                    height: 60,
+                    height: 50,
                     width: MediaQuery.of(context).size.width - 30,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
