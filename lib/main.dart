@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hack_it_out_demo/views/splash_screen.dart';
 // import 'package:hack_it_out_demo/SignInPages/company_signup.dart';
 // import 'package:hack_it_out_demo/SignInPages/profile_type.dart';
 // import 'package:hack_it_out_demo/SignInPages/user_signup.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'Varela'
       ),      
-      home: Login(),
+      home: SplashScreen(),
     );
   }
 }

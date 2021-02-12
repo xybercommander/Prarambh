@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hack_it_out_demo/modules/company_constants.dart';
-import 'package:hack_it_out_demo/modules/customer_constants.dart';
 
 class CompanyMainPage extends StatefulWidget {
   @override
