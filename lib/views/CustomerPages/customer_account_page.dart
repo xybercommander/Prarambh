@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:hack_it_out_demo/modules/customer_constants.dart';
 
@@ -6,8 +7,7 @@ class CustomerAccountPage extends StatefulWidget {
   _CustomerAccountPageState createState() => _CustomerAccountPageState();
 }
 
-class _CustomerAccountPageState extends State<CustomerAccountPage> {
-
+class _CustomerAccountPageState extends State<CustomerAccountPage> {  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +26,12 @@ class _CustomerAccountPageState extends State<CustomerAccountPage> {
       ),
 
       body: Center(
-        child: Text('Account Page'),
+        child: CustomerConstants.imgUrl == '' ?
+          Image.asset('assets/icons/noImg.png') :
+          ClipRRect(
+            child: Image.file(File(CustomerConstants.imgUrl), width: 200, height: 200,),
+            borderRadius: BorderRadius.circular(100),
+          )
       ),
     );
   }

@@ -1,3 +1,6 @@
+import 'dart:io';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hack_it_out_demo/modules/customer_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:hack_it_out_demo/SignInPages/login.dart';
@@ -6,6 +9,7 @@ import 'package:hack_it_out_demo/services/database.dart';
 import 'package:hack_it_out_demo/views/CustomerPages/customer_mainpage.dart';
 import 'package:hack_it_out_demo/views/customer_navigator.dart';
 import 'package:hack_it_out_demo/widgets/sign_in_widgets.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:page_transition/page_transition.dart';
 
 class UserSignUp extends StatefulWidget {
@@ -25,20 +29,23 @@ class _UserSignUpState extends State<UserSignUp> {
 
   bool isLoading = false;  
   bool showPassword = false;
+  File _image;
+  String imgUrl;
 
 
   signUp() {
-
     if(formKey.currentState.validate()) {
       Map<String, dynamic> userInfo = {
         'fullName': nameTextEditingController.text,
-        'email': emailTextEditingController.text, 
+        'email': emailTextEditingController.text,
+        'imgUrl': _image == null ? '' : _image.path, // Change this to Firebase storage url getter
         'isCompany': false       
       };
 
       authMethods.signUpWithEmailAndPassword
         (emailTextEditingController.text, passwordTextEditingController.text).then((value) {          
           CustomerConstants.fullName = nameTextEditingController.text;
+          CustomerConstants.imgUrl = _image == null ? '' : _image.path; //  Change this to firebase storage url getter
 
           databaseMethods.uploadUserInfo(userInfo);
 
@@ -49,7 +56,30 @@ class _UserSignUpState extends State<UserSignUp> {
           ));
         });
     }
+  }
 
+
+  final picker = ImagePicker();
+  Future getImage() async {
+    PickedFile pickedFile = await picker.getImage(source: ImageSource.gallery);
+    setState(() {
+      if(pickedFile != null) {
+        _image = File(pickedFile.path);
+      } else {
+        Fluttertoast.showToast(
+          msg: 'No Image Picked!',
+          textColor: Colors.white,
+          backgroundColor: Color.fromRGBO(253, 170, 142, 1)
+        );
+      }
+    });
+  }
+
+  Future uploadPic(context) {
+    final file = _image;
+    FirebaseStorage storage = FirebaseStorage.instance;
+    Reference reference = storage.ref().child('image' + DateTime.now().toString());
+    UploadTask uploadTask = reference.putFile(_image);
   }
 
 
@@ -65,7 +95,7 @@ class _UserSignUpState extends State<UserSignUp> {
         height: double.infinity,
         padding: EdgeInsets.symmetric(vertical: 64, horizontal: 16),        
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+          // crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
@@ -83,15 +113,43 @@ class _UserSignUpState extends State<UserSignUp> {
               ), 
             ),
             Container(
-              height: 230,
+              height: 350,
               width: MediaQuery.of(context).size.width - 30,              
               // color: Colors.redAccent,
               child: Form(
                 key: formKey,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [   
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 16),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          _image == null ? Image.asset('assets/icons/noImg.png', height: 100, width: 100,) :
+                                           Container(                                                                             
+                                             decoration: BoxDecoration(
+                                               color: Colors.grey[300],
+                                               borderRadius: BorderRadius.circular(50)
+                                             ),
+                                             child: ClipRRect(
+                                               borderRadius: BorderRadius.circular(50),
+                                               child: Image.file(_image, width: 100, height: 100,
+                                             ))
+                                           ),
+                          RaisedButton(
+                            onPressed: () async {
+                              await getImage();
+                            },
+                            color: Color.fromRGBO(250, 89, 143, 1),
+                            splashColor: Colors.white.withOpacity(0.6),
+                            elevation: 10,                          
+                            child: Text('Add a Profile Pic', style: TextStyle(color: Colors.white),),
+                          )
+                        ],
+                      ),
+                    ),
                     fullNameInput(context, nameTextEditingController),
                     emailInput(context, emailTextEditingController),
                     passwordInput(context, passwordTextEditingController, showPassword),
@@ -115,25 +173,28 @@ class _UserSignUpState extends State<UserSignUp> {
                 ),
               ),
             ),
-            GestureDetector(
-              onTap: () {
-                print("Trying to signup");
-                signUp();
-              },
-              child: Container(                
-                height: 60,
-                width: MediaQuery.of(context).size.width - 30,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),                  
-                  gradient: LinearGradient(
-                    colors: [Color.fromRGBO(250, 89, 143, 1), Color.fromRGBO(253, 170, 142, 1)]
-                  )
-                ),
-                child: Center(
-                  child: Text("Sign Up", style: TextStyle(color: Colors.white, fontSize: 20),),
+            RaisedButton(
+                onPressed: () {
+                  print('Trying to sign up');
+                  signUp();
+                },
+                textColor: Colors.white,                
+                padding: const EdgeInsets.all(0.0),
+                elevation: 10,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                child: Container(
+                  height: 60,
+                  width: MediaQuery.of(context).size.width - 40,
+                  decoration: new BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    gradient: new LinearGradient(
+                      colors: [Color.fromRGBO(250, 89, 143, 1), Color.fromRGBO(253, 170, 142, 1)]
+                    )
+                  ),
+                  padding: const EdgeInsets.all(10.0),
+                  child: Center(child: Text("Sign Up", style: TextStyle(fontSize: 22),)),
                 ),
               ),
-            ),
             Container(
               height: 70,
               width: MediaQuery.of(context).size.width - 30,              
