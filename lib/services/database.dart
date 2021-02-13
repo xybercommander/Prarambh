@@ -12,4 +12,11 @@ class DatabaseMethods {
       .where('email', isEqualTo: userEmail)
       .snapshots();
   }
+
+  Future<Stream<QuerySnapshot>> getCompanyList(String serviceType) async {
+    return await FirebaseFirestore.instance
+      .collection('companies')
+      .where('companyService', isEqualTo: serviceType)
+      .snapshots();
+  }
 }
