@@ -26,6 +26,7 @@ class _CompanySignUpState extends State<CompanySignUp> {
 
   final formKey = GlobalKey<FormState>();
   bool showPassword = false;
+  bool darkMode = false;
   String serviceTypeValue = 'Developer';
 
   AuthMethods authMethods = new AuthMethods();
@@ -147,11 +148,22 @@ class _CompanySignUpState extends State<CompanySignUp> {
               height: 60,
               width: MediaQuery.of(context).size.width - 30,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  gradient: LinearGradient(colors: [
-                    Color.fromRGBO(250, 89, 143, 1),
-                    Color.fromRGBO(253, 170, 142, 1)
-                  ])),
+                  borderRadius: BorderRadius.all(Radius.circular(50)),
+                  boxShadow: [
+                    BoxShadow(
+                        color: darkMode ? Colors.grey[900] : Colors.grey[600],
+                        offset: Offset(4.0, 4.0),
+                        blurRadius: 15.0,
+                        spreadRadius: 1.0),
+                    BoxShadow(
+                        color: darkMode ? Colors.grey[800] : Colors.white,
+                        offset: Offset(-4.0, -4.0),
+                        blurRadius: 15.0,
+                        spreadRadius: 1.0)
+                  ],
+                  gradient: new LinearGradient(
+                    colors: [const Color(0xFF915FB5), const Color(0xFFCA436B)],
+                  )),
               child: Center(
                 child: Text(
                   "Sign Up",
@@ -207,7 +219,8 @@ class _CompanySignUpState extends State<CompanySignUp> {
           'Designer',
           'House Cleaning',
           'Grocery Store',
-          'Restraunt'
+          'Restraunt',
+          'Education'
         ].map<DropdownMenuItem<String>>((String value) {
           return DropdownMenuItem<String>(
             value: value,

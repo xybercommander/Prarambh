@@ -18,8 +18,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Hack it out App Demo',
-      theme: ThemeData(fontFamily: 'Montserrat-Bold'),
+      title: 'Prarambh',
+      theme: ThemeData(
+        fontFamily: 'Montserrat-Bold',
+        scaffoldBackgroundColor: Colors.white.withOpacity(0.9),
+      ),
       home: SplashScreen(),
     );
   }
