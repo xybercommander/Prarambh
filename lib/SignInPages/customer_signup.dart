@@ -30,22 +30,24 @@ class _UserSignUpState extends State<UserSignUp> {
   bool isLoading = false;  
   bool showPassword = false;
   File _image;
-  String imgUrl;
+  String imgUrl = '';  
 
 
-  signUp() {
+  signUp() async {
     if(formKey.currentState.validate()) {
+      await uploadPic();
+
       Map<String, dynamic> userInfo = {
         'fullName': nameTextEditingController.text,
         'email': emailTextEditingController.text,
-        'imgUrl': _image == null ? '' : _image.path, // Change this to Firebase storage url getter
+        'imgUrl': imgUrl == '' ? '' : imgUrl,
         'isCompany': false       
       };
 
       authMethods.signUpWithEmailAndPassword
         (emailTextEditingController.text, passwordTextEditingController.text).then((value) {          
           CustomerConstants.fullName = nameTextEditingController.text;
-          CustomerConstants.imgUrl = _image == null ? '' : _image.path; //  Change this to firebase storage url getter
+          CustomerConstants.imgUrl = imgUrl == '' ? '' : imgUrl; //  Change this to firebase storage url getter
 
           databaseMethods.uploadUserInfo(userInfo);
 
@@ -75,11 +77,12 @@ class _UserSignUpState extends State<UserSignUp> {
     });
   }
 
-  Future uploadPic(context) {
+  Future uploadPic() async {
     final file = _image;
     FirebaseStorage storage = FirebaseStorage.instance;
-    Reference reference = storage.ref().child('image' + DateTime.now().toString());
-    UploadTask uploadTask = reference.putFile(_image);
+    Reference reference = storage.ref().child(file.path);
+    await reference.putFile(file);
+    imgUrl = await reference.getDownloadURL();    
   }
 
 
@@ -175,7 +178,7 @@ class _UserSignUpState extends State<UserSignUp> {
             ),
             RaisedButton(
                 onPressed: () {
-                  print('Trying to sign up');
+                  print('Trying to sign up');                                    
                   signUp();
                 },
                 textColor: Colors.white,                
