@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hack_it_out_demo/modules/customer_constants.dart';
+import 'package:page_transition/page_transition.dart';
 
 class CustomerSearchPage extends StatefulWidget {    
   @override

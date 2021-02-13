@@ -3,6 +3,7 @@ import 'package:hack_it_out_demo/modules/company_constants.dart';
 import 'package:hack_it_out_demo/services/auth.dart';
 import 'package:hack_it_out_demo/services/database.dart';
 import 'package:hack_it_out_demo/views/CompanyPages/company_mainpage.dart';
+import 'package:hack_it_out_demo/views/company_navigator.dart';
 import 'package:hack_it_out_demo/widgets/sign_in_widgets.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:hack_it_out_demo/SignInPages/login.dart';
@@ -46,7 +47,7 @@ class _CompanySignUpState extends State<CompanySignUp> {
         databaseMethods.uploadUserInfo(companyMap);
 
         Navigator.pushReplacement(context, PageTransition(
-          child: CompanyMainPage(),
+          child: CompanyNavigationPage(),
           type: PageTransitionType.rightToLeftWithFade,
           duration: Duration(milliseconds: 300)
         ));
