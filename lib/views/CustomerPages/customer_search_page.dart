@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:hack_it_out_demo/modules/customer_constants.dart';
+import 'package:hack_it_out_demo/services/database.dart';
 import 'package:page_transition/page_transition.dart';
 
 class CustomerSearchPage extends StatefulWidget {
@@ -10,6 +11,15 @@ class CustomerSearchPage extends StatefulWidget {
 
 class _CustomerSearchPageState extends State<CustomerSearchPage> {
   TextEditingController searchTextEditingController = TextEditingController();
+  DatabaseMethods databaseMethods = DatabaseMethods();
+  Stream companiesStream;
+  
+  Set<String> querySet = Set();
+  List<Map<String, dynamic>> companyQueries = [];
+
+  // initiateSearch(servicetype) async {    
+  //   companiesStream = await databaseMethods.searchByService(searchTextEditingController.text);    
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +31,9 @@ class _CustomerSearchPageState extends State<CustomerSearchPage> {
           child: TextField(
             controller: searchTextEditingController,
             decoration: InputDecoration(
-                prefixIcon: Icon(
-                  Icons.search,
-                  color: Color.fromRGBO(250, 89, 143, 1),
-                ),
+                suffixIcon: IconButton(icon: Icon(Icons.search), onPressed: () {
+                  setState(() {});
+                }),
                 labelText: 'Search',
                 labelStyle: TextStyle(color: Color.fromRGBO(250, 89, 143, 1)),
                 border: OutlineInputBorder(
@@ -41,22 +50,39 @@ class _CustomerSearchPageState extends State<CustomerSearchPage> {
             style: TextStyle(fontSize: 18),
           ),
         ),
+        IconButton(icon: Icon(Icons.info), onPressed: () {
+          for(var q in querySet) {
+            print(q);
+          }
+        }),
         Expanded(
           child: StreamBuilder(
-            stream:
-                FirebaseFirestore.instance.collection('companies').snapshots(),
-            builder:
-                (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+            stream: databaseMethods.searchByService(searchTextEditingController.text),
+            builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
               if (!snapshot.hasData) {
                 return Center(
                   child: CircularProgressIndicator(),
                 );
+              } else {
+                for(int i = 0; i < snapshot.data.docs.length; i++) {
+                  DocumentSnapshot documentSnapshot = snapshot.data.docs[i];
+                  if(documentSnapshot['companyService'] == searchTextEditingController.text) {
+                    querySet.add(documentSnapshot['companyName']);
+                  }
+                }
               }
 
               return ListView(
                 children: snapshot.data.docs.map((docs) {
-                  return ListTile(
-                    title: docs['companyService'] == 'Developer' ? Text('Company Name: ${docs['companyName']}') : null,
+                  return Container(
+                    margin: EdgeInsets.all(16),                    
+                    height: 100,
+                    child: Card(
+                      elevation: 10,
+                      child: 
+                        Center(child: Text('Company Name: ${docs['companyName']}, Company Service: ${docs['companyService']}')),
+                                            
+                    ),
                   );
                 }).toList(),
               );

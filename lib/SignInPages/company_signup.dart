@@ -29,6 +29,7 @@ class _CompanySignUpState extends State<CompanySignUp> {
   final formKey = GlobalKey<FormState>();
   bool showPassword = false;
   String serviceTypeValue = 'Developer';
+  bool darkMode = false;
 
   AuthMethods authMethods = new AuthMethods();
   DatabaseMethods databaseMethods = new DatabaseMethods();
@@ -170,11 +171,22 @@ class _CompanySignUpState extends State<CompanySignUp> {
                   height: 60,
                   width: MediaQuery.of(context).size.width - 30,
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      gradient: LinearGradient(colors: [
-                        Color.fromRGBO(250, 89, 143, 1),
-                        Color.fromRGBO(253, 170, 142, 1)
-                      ])),
+                      borderRadius: BorderRadius.circular(50),
+                      boxShadow: [
+                      BoxShadow(
+                          color: darkMode ? Colors.grey[900] : Colors.grey[600],
+                          offset: Offset(4.0, 4.0),
+                          blurRadius: 15.0,
+                          spreadRadius: 1.0),
+                      BoxShadow(
+                        color: darkMode ? Colors.grey[800] : Colors.white,
+                        offset: Offset(-4.0, -4.0),
+                        blurRadius: 15.0,
+                        spreadRadius: 1.0)
+                  ],
+                  gradient: new LinearGradient(
+                    colors: [const Color(0xFF915FB5), const Color(0xFFCA436B)],
+                  )),
                   child: Center(
                     child: Text(
                       "Sign Up",
@@ -225,7 +237,7 @@ class _CompanySignUpState extends State<CompanySignUp> {
             color: Colors.black45, fontFamily: 'Varela', fontSize: 16),
         icon: Icon(Icons.arrow_drop_down_outlined),
         value: '$serviceTypeValue',
-        items: ['Developer', 'Designer', 'House Cleaning']
+        items: ['Developer', 'Designer', 'House Cleaning', 'Grocery Store', 'Restaurant', 'Education']
             .map<DropdownMenuItem<String>>((String value) {
           return DropdownMenuItem<String>(
             value: value,

@@ -16,6 +16,12 @@ class DatabaseMethods {
         .snapshots();
   }
 
+
+  searchByService(String servicetype) {
+    return FirebaseFirestore.instance.collection('companies')
+      .where('companyService', isEqualTo: servicetype)
+      .snapshots();
+  }
   // Future<Stream<QuerySnapshot>> getCompanyList(String serviceType) async {
   //   return await FirebaseFirestore.instance
   //       .collection('companies')
