@@ -43,6 +43,13 @@ class _CompanySignUpState extends State<CompanySignUp> {
         'isCompany': true
       };
 
+      Map<String, dynamic> companyInfo = {
+        'companyDesc': descriptionTextEditingController.text,
+        'companyName': companyNameTextEditingController.text,
+        'companyService': CompanyConstants.serviceType
+      };
+
+      // Shared Preference implementations
       SharedPref.saveCompanyNameSharedPreference(
           companyNameTextEditingController.text);
       SharedPref.saveEmailSharedPreference(emailTextEditingController.text);
@@ -63,6 +70,7 @@ class _CompanySignUpState extends State<CompanySignUp> {
         // Company service type constants is already saved in signin widgets
 
         databaseMethods.uploadUserInfo(companyMap);
+        databaseMethods.uploadCompanyInfo(companyInfo);
 
         Navigator.pushReplacement(
             context,
