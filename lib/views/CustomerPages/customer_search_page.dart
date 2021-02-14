@@ -50,11 +50,6 @@ class _CustomerSearchPageState extends State<CustomerSearchPage> {
             style: TextStyle(fontSize: 18),
           ),
         ),
-        IconButton(icon: Icon(Icons.info), onPressed: () {
-          for(var q in querySet) {
-            print(q);
-          }
-        }),
         Expanded(
           child: StreamBuilder(
             stream: databaseMethods.searchByService(searchTextEditingController.text),

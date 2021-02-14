@@ -4,7 +4,6 @@ import 'package:hack_it_out_demo/modules/company_constants.dart';
 import 'package:hack_it_out_demo/views/CompanyPages/company_account_page.dart';
 import 'package:hack_it_out_demo/views/CompanyPages/company_chat_page.dart';
 import 'package:hack_it_out_demo/views/CompanyPages/company_mainpage.dart';
-import 'package:hack_it_out_demo/views/CompanyPages/company_search_page.dart';
 
 class CompanyNavigationPage extends StatefulWidget {
   final bool isLoggedIn;
@@ -19,8 +18,7 @@ class _CompanyNavigationPageState extends State<CompanyNavigationPage> {
   int _selectedIndex = 0;
 
   List<Widget> pages = [
-    CompanyMainPage(),
-    CompanySearchPage(),
+    CompanyMainPage(),    
     CompanyAccountPage()
   ];
 
@@ -110,15 +108,8 @@ class _CompanyNavigationPageState extends State<CompanyNavigationPage> {
             title: Container(),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search,
-                color: _selectedIndex == 1
-                    ? Color.fromRGBO(250, 89, 143, 1)
-                    : Colors.grey[400]),
-            title: Container(),
-          ),
-          BottomNavigationBarItem(
             icon: Icon(Icons.account_box,
-                color: _selectedIndex == 2
+                color: _selectedIndex == 1
                     ? Color.fromRGBO(250, 89, 143, 1)
                     : Colors.grey[400]),
             title: Container(),
