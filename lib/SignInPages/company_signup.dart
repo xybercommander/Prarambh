@@ -60,9 +60,9 @@ class _CompanySignUpState extends State<CompanySignUp> {
     });
   }
 
-  signUp() {
+  signUp() async {
     if (formKey.currentState.validate()) {
-      uploadPic();
+      await uploadPic();
 
       Map<String, dynamic> companyMap = {
         'companyName': companyNameTextEditingController.text,
@@ -91,6 +91,7 @@ class _CompanySignUpState extends State<CompanySignUp> {
           descriptionTextEditingController.text);
       SharedPref.saveCompanyServiceTypeSharedPreference(
           CompanyConstants.serviceType);
+      SharedPref.saveLogoUrlSharedPreference(logoUrl);
 
       authMethods
           .signUpWithEmailAndPassword(emailTextEditingController.text,

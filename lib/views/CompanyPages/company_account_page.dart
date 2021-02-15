@@ -40,14 +40,15 @@ class _CompanyAccountPageState extends State<CompanyAccountPage> {
             child: Column(
               children: [
                  Center(
-                    // child: CompanyConstants.logoUrl == ''
-                    //     ? Image.asset('assets/icons/noImg.png', height: 200, width: 200,)
-                    //     : ClipRRect(
-                    //         child: Image.network(CompanyConstants.logoUrl, height: 200, width: 200,),
-                    //         borderRadius: BorderRadius.circular(100),
-                    //       )),
-                    child: Image.asset('assets/icons/noImg.png', height: 200, width: 200,),
-                 ),
+                    child: CompanyConstants.logoUrl == '' || CompanyConstants.logoUrl == null
+                        ? Image.asset('assets/icons/noImg.png', height: 200, width: 200,)
+                        : ClipRRect(
+                            child: Image.network(CompanyConstants.logoUrl, height: 200, width: 200,),
+                            borderRadius: BorderRadius.circular(100),
+                          )),
+
+                    // child: Image.asset('assets/icons/noImg.png', height: 200, width: 200,)),                
+                SizedBox(height: 16,),
                 Text(
                   CompanyConstants.companyName,
                   style: TextStyle(color: Colors.white, fontSize: 20),
