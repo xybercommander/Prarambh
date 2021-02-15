@@ -1,4 +1,8 @@
+import 'dart:io';
+
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hack_it_out_demo/helper/sharedpreferences.dart';
 import 'package:hack_it_out_demo/modules/company_constants.dart';
 import 'package:hack_it_out_demo/services/auth.dart';
@@ -6,6 +10,7 @@ import 'package:hack_it_out_demo/services/database.dart';
 import 'package:hack_it_out_demo/views/CompanyPages/company_mainpage.dart';
 import 'package:hack_it_out_demo/views/company_navigator.dart';
 import 'package:hack_it_out_demo/widgets/sign_in_widgets.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:hack_it_out_demo/SignInPages/login.dart';
 
@@ -15,39 +20,64 @@ class CompanySignUp extends StatefulWidget {
 }
 
 class _CompanySignUpState extends State<CompanySignUp> {
-  TextEditingController companyNameTextEditingController =
-      new TextEditingController();
-  TextEditingController serviceTypeTextEditingController =
-      new TextEditingController();
-  TextEditingController descriptionTextEditingController =
-      new TextEditingController();
-  TextEditingController emailTextEditingController =
-      new TextEditingController();
-  TextEditingController passwordTextEditingController =
-      new TextEditingController();
+  TextEditingController companyNameTextEditingController = TextEditingController();
+  TextEditingController serviceTypeTextEditingController = TextEditingController();
+  TextEditingController descriptionTextEditingController = TextEditingController();
+  TextEditingController emailTextEditingController = TextEditingController();
+  TextEditingController passwordTextEditingController = TextEditingController();
 
   final formKey = GlobalKey<FormState>();
   bool showPassword = false;
   String serviceTypeValue = 'Developer';
   bool darkMode = false;
 
+  File _image;
+  String logoUrl = '';
+
   AuthMethods authMethods = new AuthMethods();
   DatabaseMethods databaseMethods = new DatabaseMethods();
 
+  Future uploadPic() async {
+    final file = _image;
+    FirebaseStorage storage = FirebaseStorage.instance;
+    Reference reference = storage.ref().child(file.path);
+    await reference.putFile(file);
+    logoUrl = await reference.getDownloadURL();
+  }
+
+  final picker = ImagePicker();
+  Future getImage() async {
+    PickedFile pickedFile = await picker.getImage(source: ImageSource.gallery);
+    setState(() {
+      if (pickedFile != null) {
+        _image = File(pickedFile.path);
+      } else {
+        Fluttertoast.showToast(
+            msg: 'No Image Picked!',
+            textColor: Colors.white,
+            backgroundColor: Color.fromRGBO(253, 170, 142, 1));
+      }
+    });
+  }
+
   signUp() {
     if (formKey.currentState.validate()) {
+      uploadPic();
+
       Map<String, dynamic> companyMap = {
         'companyName': companyNameTextEditingController.text,
         'description': descriptionTextEditingController.text,
         'email': emailTextEditingController.text,
         'serviceType': CompanyConstants.serviceType,
+        'logoUrl': logoUrl == '' ? '' : logoUrl,
         'isCompany': true
       };
 
       Map<String, dynamic> companyInfo = {
         'companyDesc': descriptionTextEditingController.text,
         'companyName': companyNameTextEditingController.text,
-        'companyService': CompanyConstants.serviceType
+        'companyService': CompanyConstants.serviceType,
+        'logoUrl': logoUrl == '' ? '' : logoUrl,
       };
 
       // Shared Preference implementations
@@ -56,6 +86,7 @@ class _CompanySignUpState extends State<CompanySignUp> {
       SharedPref.saveEmailSharedPreference(emailTextEditingController.text);
       SharedPref.saveIsCompanySharedPreference(true);
       SharedPref.saveLoggedInSharedPreference(true);
+      if (logoUrl != '') SharedPref.saveImgUrlSharedPreference(logoUrl);
       SharedPref.saveCompanyDescriptionSharedPreference(
           descriptionTextEditingController.text);
       SharedPref.saveCompanyServiceTypeSharedPreference(
@@ -68,6 +99,9 @@ class _CompanySignUpState extends State<CompanySignUp> {
         CompanyConstants.companyName = companyNameTextEditingController.text;
         CompanyConstants.description = descriptionTextEditingController.text;
         CompanyConstants.email = emailTextEditingController.text;
+        CompanyConstants.logoUrl = logoUrl == ''
+            ? ''
+            : logoUrl; 
         // Company service type constants is already saved in signin widgets
 
         databaseMethods.uploadUserInfo(companyMap);
@@ -119,7 +153,7 @@ class _CompanySignUpState extends State<CompanySignUp> {
                 ),
               ),
               Container(
-                height: 350,
+                height: MediaQuery.of(context).size.height / 1.8,
                 width: MediaQuery.of(context).size.width - 30,
                 child: Form(
                   key: formKey,
@@ -127,6 +161,44 @@ class _CompanySignUpState extends State<CompanySignUp> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 16),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            _image == null
+                                ? Image.asset(
+                                    'assets/icons/noImg.png',
+                                    height: 100,
+                                    width: 100,
+                                  )
+                                : Container(
+                                    decoration: BoxDecoration(
+                                        color: Colors.grey[300],
+                                        borderRadius:
+                                            BorderRadius.circular(50)),
+                                    child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(50),
+                                        child: Image.file(
+                                          _image,
+                                          width: 100,
+                                          height: 100,
+                                        ))),
+                            RaisedButton(
+                              onPressed: () async {
+                                await getImage();
+                              },
+                              color: const Color(0xFFCA436B),
+                              splashColor: Colors.white.withOpacity(0.6),
+                              elevation: 10,
+                              child: Text(
+                                'Add a Company Logo',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
                       companyNameInput(
                           context, companyNameTextEditingController),
                       Container(

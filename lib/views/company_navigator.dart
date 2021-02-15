@@ -23,9 +23,8 @@ class _CompanyNavigationPageState extends State<CompanyNavigationPage> {
   ];
 
   setAppBarTitle(int index) {
-    if (index == 0) return Text('Company Main Page');
-    if (index == 1) return Text('Company Search Page');
-    if (index == 2) return Text('Company Account Page');
+    if (index == 0) return Text('Company Main Page');    
+    if (index == 1) return Text('Company Account Page');
   }
 
   void setCredentials() async {
@@ -37,6 +36,7 @@ class _CompanyNavigationPageState extends State<CompanyNavigationPage> {
           await SharedPref.getCompanyDescriptionInSharedPreference();
       CompanyConstants.serviceType =
           await SharedPref.getCompanyServiceTypeInSharedPreference();
+      CompanyConstants.logoUrl = await SharedPref.getLogoUrlInSharedPreference();
     }
   }
 

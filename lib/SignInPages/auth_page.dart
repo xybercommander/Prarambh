@@ -60,10 +60,12 @@ class _AuthPageState extends State<AuthPage> {
               CompanyConstants.email = documentSnapshot['email'];
               CompanyConstants.serviceType = documentSnapshot['serviceType'];
               CompanyConstants.description = documentSnapshot['description'];
+              CompanyConstants.logoUrl = documentSnapshot['logoUrl'];
 
               SharedPref.saveCompanyNameSharedPreference(
                   documentSnapshot['companyName']);
               SharedPref.saveEmailSharedPreference(documentSnapshot['email']);
+              SharedPref.saveLogoUrlSharedPreference(documentSnapshot['logoUrl']);
               SharedPref.saveCompanyDescriptionSharedPreference(
                   documentSnapshot['description']);
               SharedPref.saveCompanyServiceTypeSharedPreference(

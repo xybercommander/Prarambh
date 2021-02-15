@@ -7,6 +7,7 @@ class SharedPref {
   static String companyNameSharedPreferenceKey = 'COMPANYKEY';
   static String emailSharedPreferenceKey = 'EMAILKEY';
   static String imgUrlSharedPreferenceKey = 'IMGURLKEY';
+  static String logoUrlSharedPreferenceKey = 'LOGOURLKEY';
   static String companyDescriptionSharedPreferenceKey = 'COMPANYDESCRIPTIONKEY';
   static String companyServiceTypeSharedPreferenceKey = 'COMPANYSERVICETYPEKEY';
 
@@ -47,6 +48,12 @@ class SharedPref {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     return await preferences.setString(
         imgUrlSharedPreferenceKey, imgurl);
+  }
+
+  static Future<void> saveLogoUrlSharedPreference(String logourl) async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    return await preferences.setString(
+        imgUrlSharedPreferenceKey, logourl);
   }
 
   static Future<void> saveCompanyDescriptionSharedPreference(String desc) async {
@@ -92,6 +99,11 @@ class SharedPref {
   static Future<String> getImgUrlInSharedPreference() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     return await preferences.getString(imgUrlSharedPreferenceKey);
+  }
+
+  static Future<String> getLogoUrlInSharedPreference() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    return await preferences.getString(logoUrlSharedPreferenceKey);
   }
 
   static Future<String> getCompanyDescriptionInSharedPreference() async {
