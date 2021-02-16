@@ -34,7 +34,7 @@ class _CustomerMainPageState extends State<CustomerMainPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 32),
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Text(
                         services[index],                    
                         style: TextStyle(
@@ -95,6 +95,15 @@ class _CustomerMainPageState extends State<CustomerMainPage> {
                                           )
                                         ],
                                       ),
+                                    ),
+                                  ),
+                                  Positioned(
+                                    top: 0,
+                                    left: 50,
+                                    child: CircleAvatar(
+                                      backgroundImage: AssetImage('assets/icons/noImg.png'),
+                                      radius: 40,
+                                      backgroundColor: Colors.white,
                                     ),
                                   ),
                                   Positioned(
