@@ -307,10 +307,10 @@ class _CompanySignUpState extends State<CompanySignUp> {
         isExpanded: true,
         underline: SizedBox(),
         style: TextStyle(
-            color: Colors.black45, fontFamily: 'Varela', fontSize: 16),
+            color: const Color(0xFF915FB5), fontFamily: 'Varela', fontSize: 16),
         icon: Icon(Icons.arrow_drop_down_outlined),
         value: '$serviceTypeValue',
-        items: ['Developer', 'Designer', 'House Cleaning', 'Grocery Store', 'Restaurant', 'Education']
+        items: ['Developer', 'Designer', 'House Cleaning', 'Grocery Store', 'Restaurant']
             .map<DropdownMenuItem<String>>((String value) {
           return DropdownMenuItem<String>(
             value: value,

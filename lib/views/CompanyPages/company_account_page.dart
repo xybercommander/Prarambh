@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hack_it_out_demo/SignInPages/login.dart';
+import 'package:hack_it_out_demo/helper/sharedpreferences.dart';
 import 'package:hack_it_out_demo/modules/company_constants.dart';
 import 'package:hack_it_out_demo/services/auth.dart';
 import 'package:page_transition/page_transition.dart';
@@ -27,7 +28,7 @@ class _CompanyAccountPageState extends State<CompanyAccountPage> {
         children: [
           Container(
             padding: EdgeInsets.symmetric(vertical: 32),
-            height: MediaQuery.of(context).size.height / 2 - 50,
+            height: MediaQuery.of(context).size.height / 2 - 100,
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
                 gradient: LinearGradient(
@@ -41,9 +42,9 @@ class _CompanyAccountPageState extends State<CompanyAccountPage> {
               children: [
                  Center(
                     child: CompanyConstants.logoUrl == '' || CompanyConstants.logoUrl == null
-                        ? Image.asset('assets/icons/noImg.png', height: 200, width: 200,)
+                        ? Image.asset('assets/icons/noImg.png', height: 150, width: 150,)
                         : ClipRRect(
-                            child: Image.network(CompanyConstants.logoUrl, height: 200, width: 200,),
+                            child: Image.network(CompanyConstants.logoUrl, height: 150, width: 150,),
                             borderRadius: BorderRadius.circular(100),
                           )),
 
@@ -61,10 +62,10 @@ class _CompanyAccountPageState extends State<CompanyAccountPage> {
                   CompanyConstants.serviceType,
                   style: TextStyle(color: Colors.white54, fontSize: 14),
                 ),
-                Text(
-                  CompanyConstants.description,
-                  style: TextStyle(color: Colors.white54, fontSize: 14),
-                ),
+                // Text(
+                //   CompanyConstants.description,
+                //   style: TextStyle(color: Colors.white54, fontSize: 14),
+                // ),
               ],
             ),
           ),
@@ -79,6 +80,7 @@ class _CompanyAccountPageState extends State<CompanyAccountPage> {
                   onTap: () async {
                     if (options[index] == 'Logout') {
                       await authMethods.signOut();
+                      SharedPref.saveLoggedInSharedPreference(false);
                       Navigator.pushReplacement(
                           context,
                           PageTransition(

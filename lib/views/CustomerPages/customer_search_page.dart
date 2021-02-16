@@ -17,6 +17,11 @@ class _CustomerSearchPageState extends State<CustomerSearchPage> {
   Set<String> querySet = Set();
   List<Map<String, dynamic>> companyQueries = [];
 
+  fixSearchText(String text) {
+    String fixedText = text[0].toUpperCase() + text.substring(1);
+    return fixedText;
+  }
+
   // initiateSearch(servicetype) async {    
   //   companiesStream = await databaseMethods.searchByService(searchTextEditingController.text);    
   // }
@@ -68,6 +73,7 @@ class _CustomerSearchPageState extends State<CustomerSearchPage> {
               }
 
               return ListView(
+                physics: BouncingScrollPhysics(),
                 children: snapshot.data.docs.map((docs) {
                   return Container(
                     margin: EdgeInsets.all(16),                    

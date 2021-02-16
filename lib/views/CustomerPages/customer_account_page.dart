@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:hack_it_out_demo/SignInPages/login.dart';
+import 'package:hack_it_out_demo/helper/sharedpreferences.dart';
 import 'package:hack_it_out_demo/modules/customer_constants.dart';
 import 'package:hack_it_out_demo/services/auth.dart';
 import 'package:network_to_file_image/network_to_file_image.dart';
@@ -34,7 +35,7 @@ class _CustomerAccountPageState extends State<CustomerAccountPage> {
         children: [
           Container(
             padding: EdgeInsets.symmetric(vertical: 32),
-            height: MediaQuery.of(context).size.height / 2 - 50,
+            height: MediaQuery.of(context).size.height / 2 - 100,
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
                 gradient: LinearGradient(
@@ -48,11 +49,13 @@ class _CustomerAccountPageState extends State<CustomerAccountPage> {
               children: [
                 Center(
                     child: CustomerConstants.imgUrl == ''
-                        ? Image.asset('assets/icons/noImg.png', height: 200, width: 200,)
-                        : ClipRRect(
-                            child: Image.network(CustomerConstants.imgUrl, height: 200, width: 200,),
-                            borderRadius: BorderRadius.circular(100),
-                          )),
+                        ? Image.asset('assets/icons/noImg.png', height: 150, width: 150,)
+                        : CircleAvatar(
+                          backgroundImage: NetworkImage(CustomerConstants.imgUrl),
+                          radius: 75,
+                          backgroundColor: Colors.transparent,
+                        )
+                ),
                 SizedBox(
                   height: 16,
                 ),
@@ -78,6 +81,7 @@ class _CustomerAccountPageState extends State<CustomerAccountPage> {
                   onTap: () async {
                     if (options[index] == 'Logout') {
                       await authMethods.signOut();
+                      SharedPref.saveLoggedInSharedPreference(false);
                       Navigator.pushReplacement(
                           context,
                           PageTransition(

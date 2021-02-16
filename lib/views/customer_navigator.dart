@@ -63,12 +63,6 @@ class _CustomerNavigationPageState extends State<CustomerNavigationPage> {
                 Color.fromRGBO(250, 89, 143, 1)
               ])),
         ),
-        leading: IconButton(
-            icon: Icon(
-              Icons.menu,
-              color: Colors.white,
-            ),
-            onPressed: null),
         actions: [
           IconButton(
               icon: Icon(
@@ -79,7 +73,9 @@ class _CustomerNavigationPageState extends State<CustomerNavigationPage> {
               onPressed: null)
         ],
       ),
+
       body: PageView(
+        
         physics: BouncingScrollPhysics(),
         controller: pageController,
         scrollDirection: Axis.horizontal,
@@ -90,6 +86,39 @@ class _CustomerNavigationPageState extends State<CustomerNavigationPage> {
         },
         children: pages,
       ),
+
+    drawer: Drawer(
+        // Add a ListView to the drawer. This ensures the user can scroll
+        // through the options in the drawer if there isn't enough vertical
+        // space to fit everything.
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              child: Text('Drawer Header'),
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+            ),
+            ListTile(
+              title: Text('Item 1'),
+              onTap: () {
+                // Update the state of the app.
+                // ...
+              },
+            ),
+            ListTile(
+              title: Text('Item 2'),
+              onTap: () {
+                // Update the state of the app.
+                // ...
+              },
+            ),
+          ],
+        ),
+      ),
+
       bottomNavigationBar: BottomNavigationBar(
         onTap: (value) {
           setState(() {
