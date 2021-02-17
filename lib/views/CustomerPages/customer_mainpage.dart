@@ -129,7 +129,7 @@ class _CustomerMainPageState extends State<CustomerMainPage> {
                                         child: Text('Preview', style: TextStyle(color: Colors.pinkAccent),),
                                         onPressed: () {
                                           Navigator.push(context, PageTransition(
-                                            child: CompanyPreview(),
+                                            child: CompanyPreview(snapshot.data.docs[index]),
                                             type: PageTransitionType.rightToLeftWithFade
                                           ));
                                         },

@@ -1,6 +1,30 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class CompanyPreview extends StatelessWidget {
+  QueryDocumentSnapshot queryDocumentSnapshot;
+  CompanyPreview(this.queryDocumentSnapshot);
+
+  AssetImage _setCover() {
+    switch(queryDocumentSnapshot['companyService']) {
+      case 'Developer' :
+        return AssetImage('assets/icons/devCover.jpg');
+        break;
+      case 'Designer' :
+        return AssetImage('assets/icons/designerCover.jpg');
+        break;
+      case 'House Cleaning' :
+        return AssetImage('assets/icons/cleaningCover.jpg');
+        break;
+      case 'Grocery Store' :
+        return AssetImage('assets/icons/storeCover.jpg');
+        break;
+      case 'Restaurant' :
+        return AssetImage('assets/icons/restaurantCover.png');
+        break;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,7 +38,7 @@ class CompanyPreview extends StatelessWidget {
                     height: 200,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage('assets/icons/devCover.jpg'),
+                        image: _setCover(),
                         fit: BoxFit.cover
                       )
                     ),
@@ -37,9 +61,9 @@ class CompanyPreview extends StatelessWidget {
                   scrollDirection: Axis.vertical,
                   children: [
                     SizedBox(height: 20,),
-                    Text('Company Name', style: TextStyle(fontSize: 40), textAlign: TextAlign.center,),
+                    Text('${queryDocumentSnapshot['companyName']}', style: TextStyle(fontSize: 40), textAlign: TextAlign.center,),
                     SizedBox(height: 10,),
-                    Text('Company Service', style: TextStyle(fontSize: 25),  textAlign: TextAlign.center,),
+                    Text('${queryDocumentSnapshot['companyService']}', style: TextStyle(fontSize: 25),  textAlign: TextAlign.center,),
                     Container(
                       margin: EdgeInsets.symmetric(horizontal: 32, vertical: 32),
                       height: 0.5,                   
@@ -48,7 +72,7 @@ class CompanyPreview extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 32),
                       child: Text(
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lacinia at quis risus sed vulputate odio. Rutrum tellus pellentesque eu tincidunt tortor. Placerat in egestas erat imperdiet sed euismod nisi porta. Ac tincidunt vitae semper quis lectus nulla at volutpat diam. Pharetra magna ac placerat vestibulum. Varius vel pharetra vel turpis nunc eget lorem dolor sed. Lectus vestibulum mattis ullamcorper velit sed. Eget nunc scelerisque viverra mauris. Lacinia quis vel eros donec ac. A erat nam at lectus urna duis convallis convallis tellus. Sed nisi lacus sed viverra tellus in hac habitasse. Maecenas volutpat blandit aliquam etiam erat velit scelerisque in. Lectus mauris ultrices eros in cursus. Non pulvinar neque laoreet suspendisse interdum consectetur libero id faucibus. Molestie nunc non blandit massa enim. Id eu nisl nunc mi ipsum. In ornare quam viverra orci sagittis eu volutpat. Eget egestas purus viverra accumsan in nisl nisi. Morbi enim nunc faucibus a pellentesque. Mattis nunc sed blandit libero volutpat sed cras ornare. Tincidunt tortor aliquam nulla facilisi cras. Sed velit dignissim sodales ut eu sem integer vitae. Eu ultrices vitae auctor eu augue. Fringilla est ullamcorper eget nulla.',
+                        '${queryDocumentSnapshot['companyDesc']}',
                         style: TextStyle(fontSize: 18),
                       ),
                     ),
