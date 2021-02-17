@@ -15,7 +15,7 @@ class CustomerMainPage extends StatefulWidget {
 class _CustomerMainPageState extends State<CustomerMainPage> {
 
   DatabaseMethods databaseMethods = DatabaseMethods();
-  List<String> services = ['Developer', 'Designer', 'House Cleaning', 'Grocery Store', 'Restaurant'];
+  List<String> services = [ 'Grocery Store', 'Restaurant', 'Developer', 'Designer', 'House Cleaning'];
 
   @override
   Widget build(BuildContext context) {

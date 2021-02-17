@@ -36,7 +36,9 @@ dependencies:
   path: ^1.7.0
   shared_preferences: ^0.5.12+4
   clay_containers: ^0.2.3
-  flutter_swiper: ^1.1.6  
+  flutter_swiper: ^1.1.6
+  random_string: ^2.1.0  
+  flutter_svg: 0.19.0
 
 
   # The following adds the Cupertino Icons font to your application.

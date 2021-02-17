@@ -1,9 +1,15 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:hack_it_out_demo/modules/customer_constants.dart';
+import 'package:hack_it_out_demo/services/database.dart';
+import 'package:hack_it_out_demo/views/chat/chat_screen.dart';
+import 'package:page_transition/page_transition.dart';
 
 class CompanyPreview extends StatelessWidget {
   QueryDocumentSnapshot queryDocumentSnapshot;
   CompanyPreview(this.queryDocumentSnapshot);
+  
+  DatabaseMethods databaseMethods = DatabaseMethods();
 
   AssetImage _setCover() {
     switch(queryDocumentSnapshot['companyService']) {
@@ -22,6 +28,14 @@ class CompanyPreview extends StatelessWidget {
       case 'Restaurant' :
         return AssetImage('assets/icons/restaurantCover.png');
         break;
+    }
+  }
+
+  getChatRoomId(String a, String b) {
+    if(a.substring(0, 1).codeUnitAt(0) > b.substring(0, 1).codeUnitAt(0)) {
+      return "$b\_$a";
+    } else {
+      return "$a\_$b";
     }
   }
 
@@ -83,7 +97,18 @@ class CompanyPreview extends StatelessWidget {
                           width: 200,
                           height: 50,
                           child: RaisedButton.icon(
-                            onPressed: () {  },
+                            onPressed: () { 
+                              var chatRoomId = getChatRoomId(CustomerConstants.fullName, queryDocumentSnapshot['companyName']);
+                              Map<String, dynamic> chatRoomInfoMap = {
+                                'users' : [CustomerConstants.fullName, queryDocumentSnapshot['companyName']]
+                              };
+                              databaseMethods.createChatRoom(chatRoomId, chatRoomInfoMap);
+
+                              Navigator.pushReplacement(context, PageTransition(
+                                child: ChatScreen(queryDocumentSnapshot['companyName'], false,),
+                                type: PageTransitionType.rightToLeftWithFade
+                              ));
+                            },
                             shape: StadiumBorder(),
                             elevation: 3,
                             icon: Icon(Icons.chat, color: Colors.white, size: 30,),
