@@ -7,7 +7,6 @@ import 'package:hack_it_out_demo/helper/sharedpreferences.dart';
 import 'package:hack_it_out_demo/modules/company_constants.dart';
 import 'package:hack_it_out_demo/services/auth.dart';
 import 'package:hack_it_out_demo/services/database.dart';
-import 'package:hack_it_out_demo/views/CompanyPages/company_mainpage.dart';
 import 'package:hack_it_out_demo/views/company_navigator.dart';
 import 'package:hack_it_out_demo/widgets/sign_in_widgets.dart';
 import 'package:image_picker/image_picker.dart';

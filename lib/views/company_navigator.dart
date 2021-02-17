@@ -3,7 +3,7 @@ import 'package:hack_it_out_demo/helper/sharedpreferences.dart';
 import 'package:hack_it_out_demo/modules/company_constants.dart';
 import 'package:hack_it_out_demo/views/CompanyPages/company_account_page.dart';
 import 'package:hack_it_out_demo/views/CompanyPages/company_chat_page.dart';
-import 'package:hack_it_out_demo/views/CompanyPages/company_mainpage.dart';
+import 'package:hack_it_out_demo/views/chat/chatroom_list.dart';
 
 class CompanyNavigationPage extends StatefulWidget {
   final bool isLoggedIn;
@@ -18,12 +18,12 @@ class _CompanyNavigationPageState extends State<CompanyNavigationPage> {
   int _selectedIndex = 0;
 
   List<Widget> pages = [
-    CompanyMainPage(),    
+    ChatRoomList(),    
     CompanyAccountPage()
   ];
 
   setAppBarTitle(int index) {
-    if (index == 0) return Text('Company Main Page');    
+    if (index == 0) return Text('Company Chat Page');    
     if (index == 1) return Text('Company Account Page');
   }
 
@@ -63,21 +63,8 @@ class _CompanyNavigationPageState extends State<CompanyNavigationPage> {
                 Color.fromRGBO(250, 89, 143, 1)
               ])),
         ),
-        leading: IconButton(
-            icon: Icon(
-              Icons.menu,
-              color: Colors.white,
-            ),
-            onPressed: null),
-        actions: [
-          IconButton(
-              icon: Icon(
-                Icons.chat_bubble,
-                color: Colors.white,
-              ),
-              onPressed: null)
-        ],
       ),
+      
       body: PageView(
         physics: BouncingScrollPhysics(),
         controller: pageController,
@@ -89,6 +76,7 @@ class _CompanyNavigationPageState extends State<CompanyNavigationPage> {
         },
         children: pages,
       ),
+
       bottomNavigationBar: BottomNavigationBar(
         onTap: (value) {
           setState(() {
@@ -101,7 +89,7 @@ class _CompanyNavigationPageState extends State<CompanyNavigationPage> {
         currentIndex: _selectedIndex,
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home,
+            icon: Icon(Icons.chat,
                 color: _selectedIndex == 0
                     ? Color.fromRGBO(250, 89, 143, 1)
                     : Colors.grey[400]),

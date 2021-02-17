@@ -5,7 +5,6 @@ import 'package:hack_it_out_demo/helper/sharedpreferences.dart';
 import 'package:hack_it_out_demo/modules/company_constants.dart';
 import 'package:hack_it_out_demo/modules/customer_constants.dart';
 import 'package:hack_it_out_demo/services/database.dart';
-import 'package:hack_it_out_demo/views/CompanyPages/company_mainpage.dart';
 import 'package:flare_dart/actor.dart';
 import 'package:hack_it_out_demo/views/company_navigator.dart';
 import 'package:hack_it_out_demo/views/customer_navigator.dart';
