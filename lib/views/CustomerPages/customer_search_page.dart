@@ -36,7 +36,7 @@ class _CustomerSearchPageState extends State<CustomerSearchPage> {
           child: TextField(
             controller: searchTextEditingController,
             decoration: InputDecoration(
-                suffixIcon: IconButton(icon: Icon(Icons.search), onPressed: () {
+                suffixIcon: IconButton(icon: Icon(Icons.search, color: Color.fromRGBO(250, 89, 143, 1),), onPressed: () {
                   setState(() {});
                 }),
                 labelText: 'Search',
@@ -76,13 +76,67 @@ class _CustomerSearchPageState extends State<CustomerSearchPage> {
                 physics: BouncingScrollPhysics(),
                 children: snapshot.data.docs.map((docs) {
                   return Container(
-                    margin: EdgeInsets.all(16),                    
-                    height: 100,
+                    padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+                    height: 180,
                     child: Card(
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
                       elevation: 10,
-                      child: 
-                        Center(child: Text('Company Name: ${docs['companyName']}, Company Service: ${docs['companyService']}')),
-                                            
+                      child: Padding(
+                        padding: const EdgeInsets.all(8),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Stack(
+                              children: [
+                                CircleAvatar(
+                                  backgroundImage: AssetImage('assets/icons/noImg.png'),
+                                  backgroundColor: Colors.transparent,
+                                  radius: 40,
+                                ),
+                                CircleAvatar(
+                                  backgroundImage: NetworkImage(docs['logoUrl']),
+                                  backgroundColor: Colors.transparent,
+                                  radius: 40,
+                                ),
+                              ],
+                            ),
+                            SizedBox(width: 20,),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Text(docs['companyName'], style: TextStyle(fontSize: 25),),
+                                  Text(docs['companyService'], style: TextStyle(color: Colors.grey[400]),),
+                                  Container(
+                                    height: 0.5,
+                                    width: MediaQuery.of(context).size.width / 3,
+                                    color: Colors.blueGrey,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      RaisedButton(
+                                        color: Color.fromRGBO(250, 89, 143, 1),
+                                        shape: StadiumBorder(),
+                                        child: Text('Contact', style: TextStyle(color: Colors.white),),
+                                        onPressed: () {},
+                                      ),
+                                      SizedBox(width: 15,),
+                                      RaisedButton(
+                                        shape: StadiumBorder(),
+                                        color: Colors.white,
+                                        child: Text('View', style: TextStyle(color: Color.fromRGBO(250, 89, 143, 1)),),
+                                        onPressed: () {},
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      )
                     ),
                   );
                 }).toList(),

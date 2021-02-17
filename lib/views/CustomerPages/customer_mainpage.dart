@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:hack_it_out_demo/modules/customer_constants.dart';
 import 'package:hack_it_out_demo/services/database.dart';
+import 'package:hack_it_out_demo/views/CompanyPages/company_preview.dart';
 import 'package:hack_it_out_demo/widgets/customer_widgets.dart';
+import 'package:page_transition/page_transition.dart';
 
 class CustomerMainPage extends StatefulWidget {    
   @override
@@ -57,7 +59,7 @@ class _CustomerMainPageState extends State<CustomerMainPage> {
                         String serviceType = services[index];
 
                         return Expanded(                      
-                          child: snapshot.data.docs.length != 0 ? Swiper(
+                          child: Swiper(
                             physics: BouncingScrollPhysics(),
                             scale: 0.8,
                             viewportFraction: 0.5,
@@ -70,7 +72,7 @@ class _CustomerMainPageState extends State<CustomerMainPage> {
                                     margin: EdgeInsets.all(16), 
                                     decoration: BoxDecoration(
                                       gradient: setContainerGradient(serviceType),
-                                      borderRadius: BorderRadius.circular(20)
+                                      borderRadius: BorderRadius.circular(20),                                      
                                     ),
                                     width: 150,
                                     child: Padding(
@@ -106,15 +108,15 @@ class _CustomerMainPageState extends State<CustomerMainPage> {
                                       backgroundColor: Colors.white,
                                     ),
                                   ),
-                                  Positioned(
-                                    top: 0,
-                                    left: 50,
-                                    child: CircleAvatar(
-                                      backgroundImage: NetworkImage(snapshot.data.docs[index]['logoUrl']),
-                                      radius: 40,
-                                      backgroundColor: Colors.transparent,
-                                    ),
-                                  ),
+                                  // Positioned(
+                                  //   top: 0,
+                                  //   left: 50,
+                                  //   child: CircleAvatar(
+                                  //     backgroundImage: NetworkImage(snapshot.data.docs[index]['logoUrl']),
+                                  //     radius: 40,
+                                  //     backgroundColor: Colors.transparent,
+                                  //   ),
+                                  // ),
                                   Positioned(           
                                     bottom: 8,
                                     left: 40,                     
@@ -124,19 +126,20 @@ class _CustomerMainPageState extends State<CustomerMainPage> {
                                       child: RaisedButton(   
                                         color: Colors.white,                               
                                         shape: StadiumBorder(),
-                                        child: Text('Preview >', style: TextStyle(color: Colors.pinkAccent),),
-                                        onPressed: () {},
+                                        child: Text('Preview', style: TextStyle(color: Colors.pinkAccent),),
+                                        onPressed: () {
+                                          Navigator.push(context, PageTransition(
+                                            child: CompanyPreview(),
+                                            type: PageTransitionType.rightToLeftWithFade
+                                          ));
+                                        },
                                       ),
                                     )
                                   ),
                                 ],
                               );
                             },                       
-                          ) : Container(
-                            width: 100,
-                            height: 50,
-                            color: Colors.amberAccent,
-                          ),
+                          )
                         );
                       },
                     )
