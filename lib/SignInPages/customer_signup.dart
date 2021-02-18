@@ -213,16 +213,13 @@ class _UserSignUpState extends State<UserSignUp> {
                   padding: const EdgeInsets.all(0.0),
                   elevation: 10,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20)),
+                      borderRadius: BorderRadius.circular(50)),
                   child: Container(
                     height: 60,
                     width: MediaQuery.of(context).size.width - 40,
                     decoration: new BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        gradient: new LinearGradient(colors: [
-                          Color.fromRGBO(250, 89, 143, 1),
-                          Color.fromRGBO(253, 170, 142, 1)
-                        ])),
+                        borderRadius: BorderRadius.circular(50),
+                        gradient: new LinearGradient(colors: [const Color(0xFF915FB5), const Color(0xFFCA436B)])),
                     padding: const EdgeInsets.all(10.0),
                     child: Center(
                         child: Text(

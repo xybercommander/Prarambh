@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:hack_it_out_demo/SignInPages/auth_page.dart';
+import 'package:hack_it_out_demo/SignInPages/forgot_password.dart';
 import 'package:hack_it_out_demo/SignInPages/profile_type.dart';
 import 'package:hack_it_out_demo/services/database.dart';
 import 'package:hack_it_out_demo/widgets/sign_in_widgets.dart';
@@ -29,8 +30,7 @@ class _LoginState extends State<Login> {
   bool darkMode = false;
 
   onLogin() async {
-    userStream = await databaseMethods
-        .getUserInfoByEmail(emailTextEditingController.text);
+    userStream = await databaseMethods.getUserInfoByEmail(emailTextEditingController.text);
   }
 
   signIn() async {
@@ -145,9 +145,15 @@ class _LoginState extends State<Login> {
                                   SizedBox(
                                       width: MediaQuery.of(context).size.width / 2 -
                                           110),
-                                  Text(
-                                    "Forgot Password?",
-                                    style: TextStyle(color: Colors.white),
+                                  GestureDetector(
+                                    onTap: () => Navigator.push(context, PageTransition(
+                                      child: ForgotPassword(),
+                                      type: PageTransitionType.rightToLeftWithFade
+                                    )),
+                                    child: Text(
+                                      "Forgot Password?",
+                                      style: TextStyle(color: Colors.purple[400]),
+                                    ),
                                   ),
                                 ],
                               )
@@ -181,10 +187,7 @@ class _LoginState extends State<Login> {
                                     blurRadius: 15.0,
                                     spreadRadius: 1.0)
                               ],
-                              gradient: LinearGradient(colors: [
-                                Color.fromRGBO(143, 148, 251, 1),
-                                Color.fromRGBO(143, 148, 251, .6)
-                              ])),
+                              gradient: LinearGradient(colors: [const Color(0xFF915FB5), const Color(0xFFCA436B)])),
                           child: Center(
                             child: Text(
                               "Login",

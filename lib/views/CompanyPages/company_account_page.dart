@@ -24,10 +24,10 @@ class _CompanyAccountPageState extends State<CompanyAccountPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+      body: Column(        
         children: [
           Container(
-            padding: EdgeInsets.symmetric(vertical: 32),
+            padding: EdgeInsets.only(top: 64),
             height: MediaQuery.of(context).size.height / 2 - 100,
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
@@ -40,13 +40,15 @@ class _CompanyAccountPageState extends State<CompanyAccountPage> {
                 ])),
             child: Column(
               children: [
+                SizedBox(height: 16,),
                  Center(
                     child: CompanyConstants.logoUrl == '' || CompanyConstants.logoUrl == null
                         ? Image.asset('assets/icons/noImg.png', height: 150, width: 150,)
-                        : ClipRRect(
-                            child: Image.network(CompanyConstants.logoUrl, height: 150, width: 150,),
-                            borderRadius: BorderRadius.circular(100),
-                          )),
+                        : CircleAvatar(
+                          backgroundImage: NetworkImage(CompanyConstants.logoUrl),
+                          backgroundColor: Colors.transparent,
+                          radius: 70,
+                        ),),
 
                     // child: Image.asset('assets/icons/noImg.png', height: 200, width: 200,)),                
                 SizedBox(height: 16,),
@@ -61,11 +63,7 @@ class _CompanyAccountPageState extends State<CompanyAccountPage> {
                 Text(
                   CompanyConstants.serviceType,
                   style: TextStyle(color: Colors.white54, fontSize: 14),
-                ),
-                // Text(
-                //   CompanyConstants.description,
-                //   style: TextStyle(color: Colors.white54, fontSize: 14),
-                // ),
+                ),                
               ],
             ),
           ),
