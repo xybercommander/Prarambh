@@ -47,7 +47,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 ),
               ],
             ),
+            SizedBox(height: 20,),
             emailInput(context, emailTextEditingController),
+            SizedBox(height: 30,),
             GestureDetector(
               onTap: () {
                 print("Sending mail");
@@ -66,7 +68,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     gradient: LinearGradient(colors: [const Color(0xFF915FB5), const Color(0xFFCA436B)])),
                 child: Center(
                   child: Text(
-                    "Login",
+                    "Send Mail",
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,
