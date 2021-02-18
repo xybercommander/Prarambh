@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hack_it_out_demo/helper/sharedpreferences.dart';
 import 'package:hack_it_out_demo/modules/company_constants.dart';
 import 'package:hack_it_out_demo/views/CompanyPages/company_account_page.dart';
-import 'package:hack_it_out_demo/views/CompanyPages/company_chat_page.dart';
 import 'package:hack_it_out_demo/views/chat/chatroom_list.dart';
 
 class CompanyNavigationPage extends StatefulWidget {

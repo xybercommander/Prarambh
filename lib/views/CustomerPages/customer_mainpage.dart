@@ -108,15 +108,15 @@ class _CustomerMainPageState extends State<CustomerMainPage> {
                                       backgroundColor: Colors.white,
                                     ),
                                   ),
-                                  // Positioned(
-                                  //   top: 0,
-                                  //   left: 50,
-                                  //   child: CircleAvatar(
-                                  //     backgroundImage: NetworkImage(snapshot.data.docs[index]['logoUrl']),
-                                  //     radius: 40,
-                                  //     backgroundColor: Colors.transparent,
-                                  //   ),
-                                  // ),
+                                  Positioned(
+                                    top: 0,
+                                    left: 50,
+                                    child: CircleAvatar(
+                                      backgroundImage: NetworkImage(snapshot.data.docs[index]['logoUrl']),
+                                      radius: 40,
+                                      backgroundColor: Colors.transparent,
+                                    ),
+                                  ),
                                   Positioned(           
                                     bottom: 8,
                                     left: 40,                     
