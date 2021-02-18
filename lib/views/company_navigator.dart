@@ -49,21 +49,21 @@ class _CompanyNavigationPageState extends State<CompanyNavigationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: setAppBarTitle(_selectedIndex),
-        centerTitle: true,
-        elevation: 0,
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.centerLeft,
-                  end: Alignment.centerRight,
-                  colors: [
-                Color.fromRGBO(253, 170, 142, 1),
-                Color.fromRGBO(250, 89, 143, 1)
-              ])),
-        ),
-      ),
+      // appBar: AppBar(
+      //   title: setAppBarTitle(_selectedIndex),
+      //   centerTitle: true,
+      //   elevation: 0,
+      //   flexibleSpace: Container(
+      //     decoration: BoxDecoration(
+      //         gradient: LinearGradient(
+      //             begin: Alignment.centerLeft,
+      //             end: Alignment.centerRight,
+      //             colors: [
+      //           Color.fromRGBO(253, 170, 142, 1),
+      //           Color.fromRGBO(250, 89, 143, 1)
+      //         ])),
+      //   ),
+      // ),
       
       body: PageView(
         physics: BouncingScrollPhysics(),

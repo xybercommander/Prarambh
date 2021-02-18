@@ -18,20 +18,6 @@ class DatabaseMethods {
       .snapshots();
   }
 
-  Future<QuerySnapshot> getUserInfoByName(String name, bool isCompany) async {
-    if(isCompany) {
-      return await FirebaseFirestore.instance
-        .collection('companies')
-        .where('companyName', isEqualTo: name)
-        .get();
-    } else {
-      return await FirebaseFirestore.instance
-        .collection('users')
-        .where('fullName', isEqualTo: name)
-        .get();
-    }
-  }
-
   searchByService(String servicetype) {
     return FirebaseFirestore.instance.collection('companies')
       .where('companyService', isEqualTo: servicetype)

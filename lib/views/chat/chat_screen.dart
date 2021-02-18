@@ -68,12 +68,12 @@ class _ChatScreenState extends State<ChatScreen> {
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
                     colors: [
-                  Color.fromRGBO(223, 140, 112, 1),
-                  Color.fromRGBO(250, 89, 143, 1)
+                  sendByMe ? Color.fromRGBO(223, 140, 112, 1) : Color.fromRGBO(194, 200, 197, 1),
+                  sendByMe ? Color.fromRGBO(250, 89, 143, 1) : Color.fromRGBO(221, 221, 218, 1),
                 ])),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text(text, style: TextStyle(color: Colors.white),),
+            child: Text(text, style: TextStyle(color: sendByMe ? Colors.white : Colors.blueGrey[900]),),
           ),
       ),
     );
