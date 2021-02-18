@@ -2,7 +2,8 @@
 
 A new Flutter project.
 
-## ppt to be added
+## PPT
+<a>https://drive.google.com/file/d/1rJaxNpZuUH_Sq8SpIOiIjngKRNLVHo2s/view?usp=sharing</a>
 
 <!-- This project is a starting point for a Flutter application.
 
