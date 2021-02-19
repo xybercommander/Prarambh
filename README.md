@@ -80,7 +80,7 @@ Prarambh is an Open Source Application made with love using Flutter to kickstart
 You can refer to the following articles on the basics of Git and Github and also contact the Project Mentors, in case you are stuck:
 
 - [Watch this video to get started, if you have no clue about open source](https://www.youtube.com/watch?v=yzeVMecydCE&ab_channel=freeCodeCamp.org)
-- [Forking a Repo](https://help.github.com/en/github/getting-started-with-github/fork-a-repo)
+- [Installing an apk](https://www.javatpoint.com/how-to-install-apk-on-android)
 - [Cloning a Repo](https://help.github.com/en/desktop/contributing-to-projects/creating-a-pull-request)
 - [How to create a Pull Request](https://opensource.com/article/19/7/create-pull-request-github)
 - [Getting started with Git and GitHub](https://towardsdatascience.com/getting-started-with-git-and-github-6fcd0f2d4ac6)
