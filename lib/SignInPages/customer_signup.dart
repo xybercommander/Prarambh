@@ -119,7 +119,7 @@ class _UserSignUpState extends State<UserSignUp> {
                       Text(
                         "Create Account,",
                         style:
-                            TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                            TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.black),
                       ),
                       Text(
                         "Sign up to get started!",
@@ -233,7 +233,7 @@ class _UserSignUpState extends State<UserSignUp> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("I am already a member, "),
+                      Text("I am already a member, ", style: TextStyle(color: Colors.black),),
                       GestureDetector(
                           onTap: () => Navigator.pushReplacement(
                                 context,

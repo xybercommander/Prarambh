@@ -141,7 +141,7 @@ class _LoginState extends State<Login> {
                                     checkColor: Colors.white,
                                     activeColor: Color.fromRGBO(250, 89, 143, 1),
                                   ),
-                                  Text("Show Password"),
+                                  Text("Show Password", style: TextStyle(color: Colors.black),),
                                   SizedBox(
                                       width: MediaQuery.of(context).size.width / 2 -
                                           110),

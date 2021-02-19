@@ -130,7 +130,7 @@ class _CustomerSearchPageState extends State<CustomerSearchPage> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  Text(docs['companyName'], style: TextStyle(fontSize: 25),),
+                                  Text(docs['companyName'], style: TextStyle(fontSize: 25, color: Colors.orange),),
                                   Text(docs['companyService'], style: TextStyle(color: Colors.grey[400]),),
                                   Container(
                                     height: 0.5,

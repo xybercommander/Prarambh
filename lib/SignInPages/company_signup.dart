@@ -118,6 +118,7 @@ class _CompanySignUpState extends State<CompanySignUp> {
     return Scaffold(        
         body: SingleChildScrollView(
           child: Container(
+            color: Colors.white,
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             padding: EdgeInsets.symmetric(vertical: 64, horizontal: 16),
@@ -135,7 +136,7 @@ class _CompanySignUpState extends State<CompanySignUp> {
                       Text(
                         "Create Services Account,",
                         style:
-                            TextStyle(fontSize: 27, fontWeight: FontWeight.bold),
+                            TextStyle(fontSize: 27, fontWeight: FontWeight.bold, color: Colors.black),
                       ),
                       Text(
                         "Sign up to get started!",
@@ -268,7 +269,7 @@ class _CompanySignUpState extends State<CompanySignUp> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("I am already a member, "),
+                      Text("I am already a member, ", style: TextStyle(color: Colors.black),),
                       GestureDetector(
                           onTap: () => Navigator.pushReplacement(
                                 context,
