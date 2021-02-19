@@ -54,7 +54,7 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget chatBubble(String text, bool sendByMe) {
     return Align(
       alignment: sendByMe ? Alignment.centerRight : Alignment.centerLeft,
-      child: Container(        
+      child: Container(              
         margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),        
         padding: EdgeInsets.all(8),
         decoration: BoxDecoration(
@@ -172,7 +172,7 @@ class _ChatScreenState extends State<ChatScreen> {
               alignment: Alignment.bottomCenter,
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                color: Colors.grey[200],
+                color: Color.fromRGBO(255, 153, 102, 1),
                 child: Row(
                   children: [
                     Expanded(
@@ -184,7 +184,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: 'type a message..',
-                          hintStyle: TextStyle(color: Colors.grey[500])
+                          hintStyle: TextStyle(color: Colors.white54)
                         ),
                       ),
                     ),
