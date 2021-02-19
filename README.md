@@ -1,6 +1,6 @@
 
 
-<h1 align="center"><img width=50% height=50% alt="SheHeroes" src="https://user-images.githubusercontent.com/71402528/107684498-e4a1cc80-6cc8-11eb-8e09-ee389bda4bde.jpg"></h1>
+<h1 align="center"><img width=50% height=50% alt="Prarambh" src="https://user-images.githubusercontent.com/71402528/107684498-e4a1cc80-6cc8-11eb-8e09-ee389bda4bde.jpg"></h1>
 <h1 align="center">Made For Local Businesses</h1>
 
 <!--[![All Contributors](https://img.shields.io/badge/all_contributors-04-orange.svg?style=flat-square)](#contributors-)-->
@@ -10,6 +10,9 @@
 [![forthebadge](https://forthebadge.com/images/badges/for-you.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/open-source.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/check-it-out.svg)](https://forthebadge.com)
+
+ ## For Project Presentation(website) [Click here](https://www.canva.com/design/DAEWXuZbgso/wnP-OGnqvIoSmDAucfQ_1A/view?website#2)
+ For Project Presentation(gdrive) : [Click Here](https://drive.google.com/file/d/1Q5EUmJeN2hDmvGlywpPif1jssVIJthJv/view?usp=sharing)
 
 <h2 align="center" id="content"> 🗂 CONTENT:</h2>
 
@@ -92,7 +95,7 @@ You can refer to the following articles on the basics of Git and Github and also
 
 ### 1️⃣ Fork it :fork_and_knife:
 
-You can get your own fork/copy of [SheHeroes](https://github.com/xybercommander/Prarambh) by using the <kbd><b>Fork</b></kbd> button.
+You can get your own fork/copy of [Prarambh](https://github.com/xybercommander/Prarambh) by using the <kbd><b>Fork</b></kbd> button.
 
 <br>
 
@@ -176,7 +179,7 @@ $ git push origin master
 
 ### 5️⃣ Ready Steady Go... :turtle: :rabbit2:
 
-Once you have completed these steps, you are ready to start contributing by checking our `Help Wanted` Issues and creating [pull requests](https:/shagun25/SheHeroes/github.com//pulls).
+Once you have completed these steps, you are ready to start contributing by checking our `Help Wanted` Issues and creating
 
 <br>
 
