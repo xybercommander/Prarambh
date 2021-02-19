@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:encrypt/encrypt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hack_it_out_demo/helper/sharedpreferences.dart';
+import 'package:hack_it_out_demo/modules/encryption_constants.dart';
 import 'package:hack_it_out_demo/services/database.dart';
 import 'package:random_string/random_string.dart';
 
@@ -22,6 +24,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
   DatabaseMethods databaseMethods = DatabaseMethods();
   Stream messageStream;
+  
 
   // Initial functions to be executed
   getChatRoomId(String a, String b) {
@@ -90,6 +93,7 @@ class _ChatScreenState extends State<ChatScreen> {
           itemCount: snapshot.data.docs.length,
           itemBuilder: (context, index) {
             DocumentSnapshot ds = snapshot.data.docs[index];
+
             return chatBubble(ds['message'], myName == ds['sendBy']);
           },
         ) : Center(
@@ -116,6 +120,7 @@ class _ChatScreenState extends State<ChatScreen> {
   // synchronizing the messages
   addMessage(bool sendClicked) {
     if(messageTextEditingController.text != '') {
+            
       String message = messageTextEditingController.text;
       var lastMessageTimeStamp = DateTime.now();
 
@@ -181,6 +186,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         // onChanged: (value) {
                         //   addMessage(false);
                         // },
+                        style: TextStyle(color: Colors.white),
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: 'type a message..',
