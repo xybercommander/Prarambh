@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hack_it_out_demo/helper/sharedpreferences.dart';
+import 'package:hack_it_out_demo/model/theme_model.dart';
 import 'package:hack_it_out_demo/modules/company_constants.dart';
 import 'package:hack_it_out_demo/views/CompanyPages/company_account_page.dart';
 import 'package:hack_it_out_demo/views/chat/chatroom_list.dart';
+import 'package:provider/provider.dart';
 
 class CompanyNavigationPage extends StatefulWidget {
   final bool isLoggedIn;
@@ -15,6 +17,7 @@ class CompanyNavigationPage extends StatefulWidget {
 class _CompanyNavigationPageState extends State<CompanyNavigationPage> {
   PageController pageController = PageController(initialPage: 0);
   int _selectedIndex = 0;
+  ThemeData themeData;
 
   List<Widget> pages = [
     ChatRoomList(),    
@@ -36,6 +39,12 @@ class _CompanyNavigationPageState extends State<CompanyNavigationPage> {
       CompanyConstants.serviceType =
           await SharedPref.getCompanyServiceTypeInSharedPreference();
       CompanyConstants.logoUrl = await SharedPref.getLogoUrlInSharedPreference();
+
+      themeData = Provider.of<ThemeModel>(context, listen: false).currentTheme;
+      bool darktheme = await SharedPref.getThemeStateInSharedPreference();
+      if(darktheme) {
+        Provider.of<ThemeModel>(context, listen: false).toggleTheme();
+      }  
     }
   }
 
@@ -90,14 +99,14 @@ class _CompanyNavigationPageState extends State<CompanyNavigationPage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.chat,
                 color: _selectedIndex == 0
-                    ? Color.fromRGBO(250, 89, 143, 1)
+                    ? Color.fromRGBO(255, 153, 102, 1)
                     : Colors.grey[400]),
             title: Container(),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_box,
                 color: _selectedIndex == 1
-                    ? Color.fromRGBO(250, 89, 143, 1)
+                    ? Color.fromRGBO(255, 153, 102, 1)
                     : Colors.grey[400]),
             title: Container(),
           ),

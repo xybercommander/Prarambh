@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:hack_it_out_demo/SignInPages/login.dart';
 import 'package:hack_it_out_demo/helper/sharedpreferences.dart';
+import 'package:hack_it_out_demo/model/theme_model.dart';
 import 'package:hack_it_out_demo/modules/company_constants.dart';
 import 'package:hack_it_out_demo/services/auth.dart';
+import 'package:hack_it_out_demo/widgets/theme_widgets.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
 
 class CompanyAccountPage extends StatefulWidget {
   @override
@@ -11,8 +14,10 @@ class CompanyAccountPage extends StatefulWidget {
 }
 
 class _CompanyAccountPageState extends State<CompanyAccountPage> {
-  AuthMethods authMethods = AuthMethods();
-  bool darkTheme = false;
+  AuthMethods authMethods = AuthMethods();  
+  ThemeData themeData;
+  bool switchState = false;
+
   List<String> options = [
     'Dark Theme',
     'Payment Options',
@@ -30,14 +35,7 @@ class _CompanyAccountPageState extends State<CompanyAccountPage> {
             padding: EdgeInsets.only(top: 64),
             height: MediaQuery.of(context).size.height / 2 - 100,
             width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.centerLeft,
-                    end: Alignment.centerRight,
-                    colors: [
-                  Color.fromRGBO(253, 170, 142, 1),
-                  Color.fromRGBO(250, 89, 143, 1)
-                ])),
+            color: Color.fromRGBO(255, 153, 102, 1),
             child: Column(
               children: [
                 SizedBox(height: 16,),
@@ -113,10 +111,17 @@ class _CompanyAccountPageState extends State<CompanyAccountPage> {
     if (option == 'Dark Theme') {
       return Switch(
           activeColor: Color.fromRGBO(250, 89, 143, 1),
-          value: darkTheme,
+          value: switchState,
           onChanged: (bool value) {
             setState(() {
-              darkTheme = !darkTheme;
+              switchState = !switchState;
+              Provider.of<ThemeModel>(context, listen: false).toggleTheme();
+              ThemeData themeData = Provider.of<ThemeModel>(context, listen: false).currentTheme;
+              if(themeData == lightTheme) {
+                SharedPref.saveThemeStateSharedPreference(false);
+              } else {
+                SharedPref.saveThemeStateSharedPreference(true);
+              }
             });
           });
     } else {
