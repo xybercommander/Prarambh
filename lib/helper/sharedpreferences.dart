@@ -10,6 +10,7 @@ class SharedPref {
   static String logoUrlSharedPreferenceKey = 'LOGOURLKEY';
   static String companyDescriptionSharedPreferenceKey = 'COMPANYDESCRIPTIONKEY';
   static String companyServiceTypeSharedPreferenceKey = 'COMPANYSERVICETYPEKEY';
+  static String themeStateSharedPreferenceKey = 'THEMESTATEKEY';
 
   // ****************
   // SET FUNCTIONS
@@ -68,6 +69,12 @@ class SharedPref {
         companyServiceTypeSharedPreferenceKey, servicetype);
   }
 
+  static Future<bool> saveThemeStateSharedPreference(bool theme) async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    return await preferences.setBool(
+        themeStateSharedPreferenceKey, theme);
+  }
+
   // ****************
   // GET FUNCTIONS
   // ****************
@@ -114,5 +121,10 @@ class SharedPref {
   static Future<String> getCompanyServiceTypeInSharedPreference() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     return preferences.getString(companyServiceTypeSharedPreferenceKey);
+  }
+
+  static Future<bool> getThemeStateInSharedPreference() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    return preferences.getBool(themeStateSharedPreferenceKey);
   }
 }

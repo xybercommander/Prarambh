@@ -58,24 +58,24 @@ class _CustomerSearchPageState extends State<CustomerSearchPage> {
             decoration: InputDecoration(
                 suffixIcon: IconButton(
                   icon: Icon(Icons.search, 
-                  color: themeData == lightTheme ? Color.fromRGBO(250, 89, 143, 1) : Color(0xff40bf7a,)), 
+                  color: themeData == lightTheme ? Color.fromRGBO(250, 89, 143, 1) : Color.fromRGBO(255, 153, 102, 1)), 
                   onPressed: () {
                     setState(() {});
                   }
                 ),
                 labelText: 'Search',
-                labelStyle: TextStyle(color: themeData == lightTheme ? Color.fromRGBO(250, 89, 143, 1) : Color(0xff40bf7a,)),
+                labelStyle: TextStyle(color: themeData == lightTheme ? Color.fromRGBO(250, 89, 143, 1) : Color.fromRGBO(255, 153, 102, 1)),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
                 enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
                     borderSide:
-                        BorderSide(color: themeData == lightTheme ? Color.fromRGBO(250, 89, 143, 1) : Color(0xff1f655d))),
+                        BorderSide(color: themeData == lightTheme ? Color.fromRGBO(250, 89, 143, 1) : Color.fromRGBO(255, 153, 102, 1))),
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
                     borderSide:
-                        BorderSide(color: themeData == lightTheme ? Color.fromRGBO(250, 89, 143, 1) : Color(0xff1f655d)))),
+                        BorderSide(color: themeData == lightTheme ? Color.fromRGBO(250, 89, 143, 1) : Color.fromRGBO(255, 153, 102, 1)))),
             style: TextStyle(fontSize: 18),
           ),
         ),

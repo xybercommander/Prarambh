@@ -13,7 +13,7 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   bool isLoggedIn = false;
-  bool isCompany = false;
+  bool isCompany = false;  
 
   void getLogAndCompanyStates() async {
     bool log = await SharedPref.getUserLoggedInSharedPreference();

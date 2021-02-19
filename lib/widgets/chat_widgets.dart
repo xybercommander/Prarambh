@@ -63,8 +63,8 @@ class _ChatRoomListTileState extends State<ChatRoomListTile> {
                       begin: Alignment.centerLeft,
                       end: Alignment.centerRight,
                       colors: [                        
-                    themeData == lightTheme ? Color.fromRGBO(223, 140, 112, 1) : Color(0xff1f655d),
-                    themeData == lightTheme ? Color.fromRGBO(250, 89, 143, 1) : Color(0xff1f655d)
+                    themeData == lightTheme ? Color.fromRGBO(223, 140, 112, 1) : Color.fromRGBO(255, 153, 102, 1),
+                    themeData == lightTheme ? Color.fromRGBO(250, 89, 143, 1) : Color.fromRGBO(255, 153, 102, 1)
                   ])),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,

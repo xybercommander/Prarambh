@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:hack_it_out_demo/helper/sharedpreferences.dart';
+import 'package:hack_it_out_demo/model/theme_model.dart';
 import 'package:hack_it_out_demo/modules/customer_constants.dart';
 import 'package:hack_it_out_demo/views/CustomerPages/customer_account_page.dart';
 import 'package:hack_it_out_demo/views/CustomerPages/customer_mainpage.dart';
 import 'package:hack_it_out_demo/views/CustomerPages/customer_search_page.dart';
 import 'package:hack_it_out_demo/views/chat/chatroom_list.dart';
+import 'package:hack_it_out_demo/widgets/theme_widgets.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
 
 class CustomerNavigationPage extends StatefulWidget {
   final bool isLoggedIn;
@@ -18,6 +21,7 @@ class CustomerNavigationPage extends StatefulWidget {
 class _CustomerNavigationPageState extends State<CustomerNavigationPage> {
   PageController pageController = PageController(initialPage: 0);
   int _selectedIndex = 0;
+  ThemeData themeData;
 
   List<Widget> pages = [
     CustomerMainPage(),
@@ -26,17 +30,22 @@ class _CustomerNavigationPageState extends State<CustomerNavigationPage> {
   ];
 
   setAppBarTitle(int index) {
-    if (index == 0) return Text('Customer Main Page');
-    if (index == 1) return Text('Customer Search Page');
-    if (index == 2) return Text('Customer Account Page');
+    if (index == 0) return Text('Customer Main Page', style: TextStyle(fontFamily: 'Varela'),);
+    if (index == 1) return Text('Customer Search Page', style: TextStyle(fontFamily: 'Varela'),);
+    if (index == 2) return Text('Customer Account Page', style: TextStyle(fontFamily: 'Varela'),);
   }
 
   void setCredentials() async {
     if (widget.isLoggedIn) {
-      CustomerConstants.fullName =
-          await SharedPref.getFullNameInSharedPreference();
+      themeData = Provider.of<ThemeModel>(context, listen: false).currentTheme;
+      CustomerConstants.fullName = await SharedPref.getFullNameInSharedPreference();
       CustomerConstants.email = await SharedPref.getEmailInSharedPreference();
       CustomerConstants.imgUrl = await SharedPref.getImgUrlInSharedPreference();
+
+      bool darktheme = await SharedPref.getThemeStateInSharedPreference();
+      if(darktheme) {
+        Provider.of<ThemeModel>(context, listen: false).toggleTheme();
+      }        
     }
   }
 
@@ -84,38 +93,6 @@ class _CustomerNavigationPageState extends State<CustomerNavigationPage> {
         children: pages,
       ),
 
-    drawer: Drawer(
-        // Add a ListView to the drawer. This ensures the user can scroll
-        // through the options in the drawer if there isn't enough vertical
-        // space to fit everything.
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              child: Text('Drawer Header'),
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-            ),
-            ListTile(
-              title: Text('Item 1'),
-              onTap: () {
-                // Update the state of the app.
-                // ...
-              },
-            ),
-            ListTile(
-              title: Text('Item 2'),
-              onTap: () {
-                // Update the state of the app.
-                // ...
-              },
-            ),
-          ],
-        ),
-      ),
-
       bottomNavigationBar: BottomNavigationBar(
         onTap: (value) {
           setState(() {
@@ -130,21 +107,21 @@ class _CustomerNavigationPageState extends State<CustomerNavigationPage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.home,
                 color: _selectedIndex == 0
-                    ? Color.fromRGBO(250, 89, 143, 1)
+                    ? Color.fromRGBO(255, 153, 102, 1)
                     : Colors.grey[400]),
             title: Container(),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.search,
                 color: _selectedIndex == 1
-                    ? Color.fromRGBO(250, 89, 143, 1)
+                    ? Color.fromRGBO(255, 153, 102, 1)
                     : Colors.grey[400]),
             title: Container(),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_box,
                 color: _selectedIndex == 2
-                    ? Color.fromRGBO(250, 89, 143, 1)
+                    ? Color.fromRGBO(255, 153, 102, 1)
                     : Colors.grey[400]),
             title: Container(),
           ),

@@ -4,6 +4,7 @@ import 'package:hack_it_out_demo/helper/sharedpreferences.dart';
 import 'package:hack_it_out_demo/model/theme_model.dart';
 import 'package:hack_it_out_demo/modules/customer_constants.dart';
 import 'package:hack_it_out_demo/services/auth.dart';
+import 'package:hack_it_out_demo/widgets/theme_widgets.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
@@ -12,10 +13,11 @@ class CustomerAccountPage extends StatefulWidget {
   _CustomerAccountPageState createState() => _CustomerAccountPageState();
 }
 
-class _CustomerAccountPageState extends State<CustomerAccountPage> {  
-  bool darkTheme = false;
+class _CustomerAccountPageState extends State<CustomerAccountPage> {    
 
   AuthMethods authMethods = AuthMethods();
+  ThemeData themeData;
+  bool switchState = false;
 
   List<String> options = [
     'Dark Theme',
@@ -26,6 +28,21 @@ class _CustomerAccountPageState extends State<CustomerAccountPage> {
   ];
 
   @override
+  void initState() {
+    themeData = Provider.of<ThemeModel>(context, listen: false).currentTheme;
+    if(themeData == darkTheme) {
+      setState(() {
+        switchState = true;
+      });
+    } else {
+      setState(() {
+        switchState = false;
+      });
+    }
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
@@ -34,14 +51,7 @@ class _CustomerAccountPageState extends State<CustomerAccountPage> {
             padding: EdgeInsets.symmetric(vertical: 32),
             height: MediaQuery.of(context).size.height / 2 - 100,
             width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.centerLeft,
-                    end: Alignment.centerRight,
-                    colors: [
-                  Color.fromRGBO(253, 170, 142, 1),
-                  Color.fromRGBO(250, 89, 143, 1)
-                ])),
+            color: Color.fromRGBO(255, 153, 102, 1),
             child: Column(
               children: [
                 Center(
@@ -113,11 +123,17 @@ class _CustomerAccountPageState extends State<CustomerAccountPage> {
     if (option == 'Dark Theme') {
       return Switch(
           activeColor: Color.fromRGBO(250, 89, 143, 1),
-          value: darkTheme,
+          value: switchState,
           onChanged: (bool value) {
-            setState(() {
-              darkTheme = !darkTheme;
+            setState(() {  
+              switchState = !switchState;
               Provider.of<ThemeModel>(context, listen: false).toggleTheme();
+              ThemeData themeData = Provider.of<ThemeModel>(context, listen: false).currentTheme;
+              if(themeData == lightTheme) {
+                SharedPref.saveThemeStateSharedPreference(false);
+              } else {
+                SharedPref.saveThemeStateSharedPreference(true);
+              }
             });
           });
     } else {

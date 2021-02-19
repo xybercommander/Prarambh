@@ -43,7 +43,8 @@ class _CustomerMainPageState extends State<CustomerMainPage> {
                           fontSize: 20, 
                           fontWeight: FontWeight.bold, 
                           letterSpacing: 2,
-                          fontFamily: 'Varela'                          
+                          fontFamily: 'Varela',
+                          color: Color.fromRGBO(255, 153, 102, 1)                         
                         ),
                       ),
                     ),
