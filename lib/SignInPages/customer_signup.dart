@@ -102,6 +102,7 @@ class _UserSignUpState extends State<UserSignUp> {
     return Scaffold(        
         body: SingleChildScrollView(
           child: Container(
+            color: Colors.white,
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,          
             padding: EdgeInsets.symmetric(vertical: 64, horizontal: 16),

@@ -75,9 +75,9 @@ class CompanyPreview extends StatelessWidget {
                   scrollDirection: Axis.vertical,
                   children: [
                     SizedBox(height: 20,),
-                    Text('${queryDocumentSnapshot['companyName']}', style: TextStyle(fontSize: 40), textAlign: TextAlign.center,),
+                    Text('${queryDocumentSnapshot['companyName']}', style: TextStyle(fontSize: 40, color: Color.fromRGBO(255, 153, 102, 1)), textAlign: TextAlign.center,),
                     SizedBox(height: 10,),
-                    Text('${queryDocumentSnapshot['companyService']}', style: TextStyle(fontSize: 25),  textAlign: TextAlign.center,),
+                    Text('${queryDocumentSnapshot['companyService']}', style: TextStyle(fontSize: 25, color: Color.fromRGBO(255, 153, 102, 1)), textAlign: TextAlign.center,),
                     Container(
                       margin: EdgeInsets.symmetric(horizontal: 32, vertical: 32),
                       height: 0.5,                   
@@ -87,7 +87,7 @@ class CompanyPreview extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 32),
                       child: Text(
                         '${queryDocumentSnapshot['companyDesc']}',
-                        style: TextStyle(fontSize: 18),
+                        style: TextStyle(fontSize: 18, color: Color.fromRGBO(255, 153, 102, 1)),
                       ),
                     ),
                     Padding(
