@@ -39,6 +39,7 @@ dependencies:
   flutter_swiper: ^1.1.6
   random_string: ^2.1.0  
   flutter_svg: 0.19.0
+  provider: ^4.3.3
 
 
   # The following adds the Cupertino Icons font to your application.
