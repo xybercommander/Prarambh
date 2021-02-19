@@ -11,7 +11,7 @@ class CompanyPreview extends StatelessWidget {
   
   DatabaseMethods databaseMethods = DatabaseMethods();
 
-  AssetImage _setCover() {
+  _setCover() {
     switch(queryDocumentSnapshot['companyService']) {
       case 'Developer' :
         return AssetImage('assets/icons/devCover.jpg');

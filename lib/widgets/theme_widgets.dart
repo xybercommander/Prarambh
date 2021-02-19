@@ -6,8 +6,8 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
     accentColor: Color(0xff40bf7a),    
     textTheme: TextTheme(                      
         title: TextStyle(color: Color(0xff40bf7a), fontFamily: 'Varela'),
-        subtitle: TextStyle(color: Colors.white),
-        subhead: TextStyle(color: Color(0xff40bf7a))),
+        subtitle: TextStyle(color: Colors.white, fontFamily: 'Varela'),
+        subhead: TextStyle(color: Color(0xff40bf7a,), fontFamily: 'Varela')),
     appBarTheme: AppBarTheme(color: Color(0xff1f655d)));
 
 ThemeData lightTheme = ThemeData.light().copyWith(  
@@ -16,8 +16,8 @@ ThemeData lightTheme = ThemeData.light().copyWith(
     textTheme: TextTheme(
 
         title: TextStyle(color: Colors.black54, fontFamily: 'Varela'),
-        subtitle: TextStyle(color: Colors.grey),
-        subhead: TextStyle(color: Colors.blueGrey[900])),
+        subtitle: TextStyle(color: Colors.grey, fontFamily: 'Varela'),
+        subhead: TextStyle(color: Colors.blueGrey[900], fontFamily: 'Varela')),
     appBarTheme: AppBarTheme(
-        color: Color(0xff1f655d),
+        color: Color.fromRGBO(255, 153, 102, 1),  
         actionsIconTheme: IconThemeData(color: Colors.white)));

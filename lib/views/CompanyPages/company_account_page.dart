@@ -101,7 +101,7 @@ class _CompanyAccountPageState extends State<CompanyAccountPage> {
     );
   }
 
-  Icon setIcon(String option) {
+  setIcon(String option) {
     if (option == 'Dark Theme') return Icon(Icons.nightlight_round);
     if (option == 'Payment Options') return Icon(Icons.payment);
     if (option == 'Privacy Policy') return Icon(Icons.privacy_tip);

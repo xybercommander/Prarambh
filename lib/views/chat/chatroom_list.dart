@@ -2,12 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hack_it_out_demo/helper/sharedpreferences.dart';
-import 'package:hack_it_out_demo/modules/company_constants.dart';
-import 'package:hack_it_out_demo/modules/customer_constants.dart';
 import 'package:hack_it_out_demo/services/database.dart';
-import 'package:hack_it_out_demo/views/chat/chat_screen.dart';
 import 'package:hack_it_out_demo/widgets/chat_widgets.dart';
-import 'package:page_transition/page_transition.dart';
 
 class ChatRoomList extends StatefulWidget {
   @override
@@ -69,8 +65,7 @@ class _ChatRoomListState extends State<ChatRoomList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color.fromRGBO(223, 140, 112, 1),
+      appBar: AppBar(        
         title: Text('Chatroom List Page'),
       ),
 

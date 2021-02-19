@@ -5,7 +5,6 @@ import 'package:hack_it_out_demo/helper/sharedpreferences.dart';
 import 'package:hack_it_out_demo/modules/company_constants.dart';
 import 'package:hack_it_out_demo/modules/customer_constants.dart';
 import 'package:hack_it_out_demo/services/database.dart';
-import 'package:flare_dart/actor.dart';
 import 'package:hack_it_out_demo/views/company_navigator.dart';
 import 'package:hack_it_out_demo/views/customer_navigator.dart';
 import 'package:page_transition/page_transition.dart';
@@ -47,10 +46,10 @@ class _AuthPageState extends State<AuthPage> {
       body: StreamBuilder(
         stream: userStream,
         builder: (context, snapshot) {
-          if (snapshot.hasData)
-            print('DATA IS THERE BRUV');
-          else
-            print('NO DATA BRUV');
+          // if (snapshot.hasData)
+          //   print('DATA IS THERE BRUV');
+          // else
+          //   print('NO DATA BRUV');
           if (snapshot.hasData) documentSnapshot = snapshot.data.docs[0];
 
           Future.delayed(Duration(seconds: 5), () {

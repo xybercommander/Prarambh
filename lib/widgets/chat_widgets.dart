@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:hack_it_out_demo/model/theme_model.dart';
 import 'package:hack_it_out_demo/modules/company_constants.dart';
 import 'package:hack_it_out_demo/modules/customer_constants.dart';
 import 'package:hack_it_out_demo/views/chat/chat_screen.dart';
+import 'package:hack_it_out_demo/widgets/theme_widgets.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
 
 
 // Chat room list tile widget
@@ -21,6 +24,8 @@ class _ChatRoomListTileState extends State<ChatRoomListTile> {
   // String name = '', profilePic = '', lastMessage = '';
   String name = '';
   var names = [];
+
+  ThemeData themeData;
   
   getThisUserName() async {    
     names = widget.chatRoomId.split('_');
@@ -37,6 +42,7 @@ class _ChatRoomListTileState extends State<ChatRoomListTile> {
   @override
   void initState() {
     getThisUserName();
+    themeData = Provider.of<ThemeModel>(context, listen: false).currentTheme;
     super.initState();
   }
 
@@ -49,16 +55,16 @@ class _ChatRoomListTileState extends State<ChatRoomListTile> {
       )),
       child: Container(
         height: 60,
-        margin: EdgeInsets.symmetric(horizontal: 16,vertical: 8),
-        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        margin: EdgeInsets.symmetric(horizontal: 24,vertical: 8),
+        padding: EdgeInsets.symmetric(horizontal: 24, vertical: 8),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           gradient: LinearGradient(
                       begin: Alignment.centerLeft,
                       end: Alignment.centerRight,
-                      colors: [
-                    Color.fromRGBO(223, 140, 112, 1),
-                    Color.fromRGBO(250, 89, 143, 1)
+                      colors: [                        
+                    themeData == lightTheme ? Color.fromRGBO(223, 140, 112, 1) : Color(0xff1f655d),
+                    themeData == lightTheme ? Color.fromRGBO(250, 89, 143, 1) : Color(0xff1f655d)
                   ])),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,

@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:hack_it_out_demo/SignInPages/login.dart';
 import 'package:hack_it_out_demo/services/auth.dart';
 import 'package:hack_it_out_demo/services/database.dart';
-import 'package:hack_it_out_demo/views/CustomerPages/customer_mainpage.dart';
 import 'package:hack_it_out_demo/views/customer_navigator.dart';
 import 'package:hack_it_out_demo/widgets/sign_in_widgets.dart';
 import 'package:image_picker/image_picker.dart';

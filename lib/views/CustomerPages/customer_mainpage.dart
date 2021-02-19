@@ -42,8 +42,8 @@ class _CustomerMainPageState extends State<CustomerMainPage> {
                         style: TextStyle(
                           fontSize: 20, 
                           fontWeight: FontWeight.bold, 
-                          letterSpacing: 2, 
-                          color: Colors.blueGrey[900]
+                          letterSpacing: 2,
+                          fontFamily: 'Varela'                          
                         ),
                       ),
                     ),
@@ -84,7 +84,10 @@ class _CustomerMainPageState extends State<CustomerMainPage> {
                                           SizedBox(height: MediaQuery.of(context).size.height / 17.5,),
                                           FittedBox(
                                             fit: BoxFit.scaleDown,
-                                            child: Text(snapshot.data.docs[index]['companyName'], style: TextStyle(color: Colors.white, fontSize: 25),)
+                                            child: Text(
+                                              snapshot.data.docs[index]['companyName'], 
+                                              style: TextStyle(color: Colors.white, fontSize: 25, fontFamily: 'Varela'),
+                                            )
                                           ),
                                           SizedBox(height: 10,),
                                           Flexible(
@@ -92,7 +95,7 @@ class _CustomerMainPageState extends State<CustomerMainPage> {
                                               snapshot.data.docs[index]['companyDesc'],
                                               maxLines: 5,
                                               overflow: TextOverflow.ellipsis,
-                                              style: TextStyle(color: Colors.white54),
+                                              style: TextStyle(color: Colors.white54, fontFamily: 'Varela'),
                                             ),
                                           )
                                         ],
@@ -126,7 +129,7 @@ class _CustomerMainPageState extends State<CustomerMainPage> {
                                       child: RaisedButton(   
                                         color: Colors.white,                               
                                         shape: StadiumBorder(),
-                                        child: Text('Preview', style: TextStyle(color: Colors.pinkAccent),),
+                                        child: Text('Preview', style: TextStyle(color: Colors.pinkAccent, fontFamily: 'Varela'),),
                                         onPressed: () {
                                           Navigator.push(context, PageTransition(
                                             child: CompanyPreview(snapshot.data.docs[index]),

@@ -6,8 +6,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:clay_containers/clay_containers.dart';
 
 class ProfileType extends StatelessWidget {
-  @override
-  bool darkMode = false;
+  @override  
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(

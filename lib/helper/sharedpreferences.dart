@@ -73,46 +73,46 @@ class SharedPref {
   // ****************
   static Future<bool> getUserLoggedInSharedPreference() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
-    return await preferences.getBool(loggedInSharedPreferenceKey);
+    return preferences.getBool(loggedInSharedPreferenceKey);
   }
 
   static Future<bool> getIsCompanySharedPreference() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
-    return await preferences.getBool(isCompanySharedPreferenceKey);
+    return preferences.getBool(isCompanySharedPreferenceKey);
   }
 
   static Future<String> getFullNameInSharedPreference() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
-    return await preferences.getString(fullNameSharedPreferenceKey);
+    return preferences.getString(fullNameSharedPreferenceKey);
   }
 
   static Future<String> getCompanyNameInSharedPreference() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
-    return await preferences.getString(companyNameSharedPreferenceKey);
+    return preferences.getString(companyNameSharedPreferenceKey);
   }
 
   static Future<String> getEmailInSharedPreference() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
-    return await preferences.getString(emailSharedPreferenceKey);
+    return preferences.getString(emailSharedPreferenceKey);
   }
 
   static Future<String> getImgUrlInSharedPreference() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
-    return await preferences.getString(imgUrlSharedPreferenceKey);
+    return preferences.getString(imgUrlSharedPreferenceKey);
   }
 
   static Future<String> getLogoUrlInSharedPreference() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
-    return await preferences.getString(logoUrlSharedPreferenceKey);
+    return preferences.getString(logoUrlSharedPreferenceKey);
   }
 
   static Future<String> getCompanyDescriptionInSharedPreference() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
-    return await preferences.getString(companyDescriptionSharedPreferenceKey);
+    return preferences.getString(companyDescriptionSharedPreferenceKey);
   }
 
   static Future<String> getCompanyServiceTypeInSharedPreference() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
-    return await preferences.getString(companyServiceTypeSharedPreferenceKey);
+    return preferences.getString(companyServiceTypeSharedPreferenceKey);
   }
 }

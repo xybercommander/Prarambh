@@ -4,8 +4,8 @@ import 'package:hack_it_out_demo/widgets/theme_widgets.dart';
 enum ThemeType { Light, Dark }
 
 class ThemeModel extends ChangeNotifier {
-  ThemeData currentTheme = darkTheme;
-  ThemeType _themeType = ThemeType.Dark;
+  ThemeData currentTheme = lightTheme;
+  ThemeType _themeType = ThemeType.Light;
 
   toggleTheme() {
     if (_themeType == ThemeType.Dark) {

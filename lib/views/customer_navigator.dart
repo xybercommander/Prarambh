@@ -53,17 +53,7 @@ class _CustomerNavigationPageState extends State<CustomerNavigationPage> {
       appBar: AppBar(
         title: setAppBarTitle(_selectedIndex),
         centerTitle: true,
-        elevation: 0,
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.centerLeft,
-                  end: Alignment.centerRight,
-                  colors: [
-                Color.fromRGBO(253, 170, 142, 1),
-                Color.fromRGBO(250, 89, 143, 1)
-              ])),
-        ),
+        elevation: 0,        
         actions: [
           IconButton(
               icon: Icon(

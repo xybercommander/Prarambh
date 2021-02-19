@@ -1,14 +1,10 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:hack_it_out_demo/SignInPages/login.dart';
 import 'package:hack_it_out_demo/helper/sharedpreferences.dart';
 import 'package:hack_it_out_demo/model/theme_model.dart';
 import 'package:hack_it_out_demo/modules/customer_constants.dart';
 import 'package:hack_it_out_demo/services/auth.dart';
-import 'package:network_to_file_image/network_to_file_image.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:path/path.dart' as p;
 import 'package:provider/provider.dart';
 
 class CustomerAccountPage extends StatefulWidget {
@@ -16,8 +12,7 @@ class CustomerAccountPage extends StatefulWidget {
   _CustomerAccountPageState createState() => _CustomerAccountPageState();
 }
 
-class _CustomerAccountPageState extends State<CustomerAccountPage> {
-  File _image;
+class _CustomerAccountPageState extends State<CustomerAccountPage> {  
   bool darkTheme = false;
 
   AuthMethods authMethods = AuthMethods();

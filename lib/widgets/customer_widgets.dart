@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-LinearGradient setContainerGradient(String service) {
+setContainerGradient(String service) {
   if(service == 'Developer') {
     return LinearGradient(
       colors: [Color.fromRGBO(222, 98, 98, 1), Color.fromRGBO(255, 184, 140, 1)]
