@@ -93,9 +93,9 @@ You can refer to the following articles on the basics of Git and Github and also
 <br>
 
 
-### 1️⃣ Fork it :fork_and_knife:
+### 1️⃣ Install The Apk into your Android Phone
 
-You can get your own fork/copy of [Prarambh](https://github.com/xybercommander/Prarambh) by using the <kbd><b>Fork</b></kbd> button.
+You can download the apk from google drive and install the app by clicking <a href="https://drive.google.com/file/d/1KPq1CzRjtydNooYv0iz4OGbFwR_OoK_C/view?usp=sharing">here</a>
 
 <br>
 
