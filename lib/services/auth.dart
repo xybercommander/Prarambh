@@ -1,3 +1,6 @@
+
+// THIS CODE IS FOR FIREBASE AUTHENTICATION
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hack_it_out_demo/modules/profile.dart';
 

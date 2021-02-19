@@ -1,3 +1,6 @@
+
+// THIS PAGE IS FOR THE CUSTOMER SEARCH PAGE
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:hack_it_out_demo/model/theme_model.dart';
@@ -60,6 +63,7 @@ class _CustomerSearchPageState extends State<CustomerSearchPage> {
                   icon: Icon(Icons.search, 
                   color: themeData == lightTheme ? Color.fromRGBO(250, 89, 143, 1) : Color.fromRGBO(255, 153, 102, 1)), 
                   onPressed: () {
+                    searchTextEditingController.text = fixSearchText(searchTextEditingController.text);
                     setState(() {});
                   }
                 ),

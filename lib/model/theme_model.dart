@@ -1,3 +1,6 @@
+
+// THEME MODEL FOR THE LIGHT AND DARK THEME
+
 import 'package:flutter/material.dart';
 import 'package:hack_it_out_demo/widgets/theme_widgets.dart';
 

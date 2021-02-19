@@ -1,3 +1,6 @@
+
+// THIS PAGE IS FOR THE SPLASH SCREEN
+
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 import 'package:hack_it_out_demo/SignInPages/login.dart';

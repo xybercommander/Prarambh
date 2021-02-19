@@ -1,3 +1,6 @@
+
+// THIS IS THE ENCRYPTION CONSTANTS
+
 import 'package:encrypt/encrypt.dart';
 import 'package:random_string/random_string.dart';
 

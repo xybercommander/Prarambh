@@ -1,3 +1,6 @@
+
+// THIS PAGE IS FOR THE CHAT ROOM LIST
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:encrypt/encrypt.dart';
 import 'package:flutter/material.dart';

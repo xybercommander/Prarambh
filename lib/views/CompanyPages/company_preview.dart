@@ -1,3 +1,6 @@
+
+// THIS PAGE IS FOR THE COMPANY PREVIEW PAGE
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:hack_it_out_demo/modules/customer_constants.dart';

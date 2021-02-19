@@ -1,3 +1,6 @@
+
+// THIS CODE IS FOR THE PROFILE TYPE SELECTION PAGE
+
 import 'package:flutter/material.dart';
 import 'package:hack_it_out_demo/SignInPages/company_signup.dart';
 import 'package:hack_it_out_demo/SignInPages/login.dart';

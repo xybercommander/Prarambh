@@ -7,7 +7,7 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="hack_it_out_demo"
+        android:label="Prarambh"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

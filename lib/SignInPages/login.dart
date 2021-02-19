@@ -1,3 +1,6 @@
+
+// THIS CODE IS FOR THE LOGIN PAGE
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:hack_it_out_demo/SignInPages/auth_page.dart';

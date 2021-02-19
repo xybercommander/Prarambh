@@ -1,3 +1,6 @@
+
+// THIS CODE IS FOR THE FORGOT PASSWORD PAGE
+
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hack_it_out_demo/services/auth.dart';

@@ -1,3 +1,6 @@
+
+// THIS PAGE IS FOR THE COMPANY NAVIGATION PAGE
+
 import 'package:flutter/material.dart';
 import 'package:hack_it_out_demo/helper/sharedpreferences.dart';
 import 'package:hack_it_out_demo/model/theme_model.dart';

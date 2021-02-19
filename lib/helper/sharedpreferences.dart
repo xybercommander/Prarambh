@@ -1,3 +1,7 @@
+
+// CODE FOR SHARING STATES IN THE LOCAL STORAGE
+
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPref {
