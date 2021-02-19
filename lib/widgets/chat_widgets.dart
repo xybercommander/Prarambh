@@ -86,6 +86,7 @@ class _ChatRoomListTileState extends State<ChatRoomListTile> {
                     widget.lastMessage.length > 30 ? widget.lastMessage.substring(0, 30) + '...' : widget.lastMessage, 
                     overflow: TextOverflow.ellipsis, 
                     style: TextStyle(
+                    fontSize: 13,
                     color: Colors.white54
                   ),)
                 ],

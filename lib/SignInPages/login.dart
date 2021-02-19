@@ -81,7 +81,7 @@ class _LoginState extends State<Login> {
                 Container(
                   width: double.infinity,
                   height: double.infinity,
-                  padding: EdgeInsets.symmetric(vertical: 64, horizontal: 16),
+                  padding: EdgeInsets.symmetric(vertical: 32, horizontal: 16),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -97,14 +97,14 @@ class _LoginState extends State<Login> {
                               "Let's sign you in,",
                               style: TextStyle(
                                   height: 4,
-                                  fontSize: 50,
+                                  fontSize: 40,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.black),
                             ),
                             Text(
                               "Welcome Back. You've been missed",
                               style: TextStyle(
-                                  fontSize: 20,
+                                  fontSize: 15,
                                   height: 2,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.black),
