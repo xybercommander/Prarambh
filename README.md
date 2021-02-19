@@ -60,7 +60,7 @@ Prarambh is an Open Source Application made with love using Flutter to kickstart
 
   #### Main Features
   
-   :point_right: Chat/Contact - The most important method to preserve a customer seller relationship is a proper way of commmunication. So We have introduced an [end-to-end encrypted chat system](https://user-images.githubusercontent.com/38849650/108539385-f0fbda00-7305-11eb-9680-5300a842dfb9.png).<br/>
+   :point_right: Chat/Contact - The most important method to preserve a customer seller relationship is a proper way of commmunication. So We have introduced an [end-to-end encrypted chat system (AES)](https://user-images.githubusercontent.com/38849650/108539385-f0fbda00-7305-11eb-9680-5300a842dfb9.png).<br/>
    :point_right: Review - With each product bought a customer can review the product or the grocery shop. The more reviews a product get chances are that it will have high demand.<br/>
      
   #### Additional Features
