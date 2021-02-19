@@ -2,20 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:hack_it_out_demo/SignInPages/login.dart';
 import 'package:hack_it_out_demo/helper/sharedpreferences.dart';
 import 'package:hack_it_out_demo/model/theme_model.dart';
-import 'package:hack_it_out_demo/modules/customer_constants.dart';
+import 'package:hack_it_out_demo/modules/company_constants.dart';
 import 'package:hack_it_out_demo/services/auth.dart';
 import 'package:hack_it_out_demo/widgets/theme_widgets.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
-class CustomerAccountPage extends StatefulWidget {
+class CompanyAccountPage extends StatefulWidget {
   @override
-  _CustomerAccountPageState createState() => _CustomerAccountPageState();
+  _CompanyAccountPageState createState() => _CompanyAccountPageState();
 }
 
-class _CustomerAccountPageState extends State<CustomerAccountPage> {    
-
-  AuthMethods authMethods = AuthMethods();
+class _CompanyAccountPageState extends State<CompanyAccountPage> {
+  AuthMethods authMethods = AuthMethods();  
   ThemeData themeData;
   bool switchState = false;
 
@@ -28,52 +27,41 @@ class _CustomerAccountPageState extends State<CustomerAccountPage> {
   ];
 
   @override
-  void initState() {
-    themeData = Provider.of<ThemeModel>(context, listen: false).currentTheme;
-    if(themeData == darkTheme) {
-      setState(() {
-        switchState = true;
-      });
-    } else {
-      setState(() {
-        switchState = false;
-      });
-    }
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+      body: Column(        
         children: [
           Container(
-            padding: EdgeInsets.symmetric(vertical: 32),
+            padding: EdgeInsets.only(top: 64),
             height: MediaQuery.of(context).size.height / 2 - 100,
             width: MediaQuery.of(context).size.width,
             color: Color.fromRGBO(255, 153, 102, 1),
             child: Column(
               children: [
-                Center(
-                    child: CustomerConstants.imgUrl == ''
+                SizedBox(height: 16,),
+                 Center(
+                    child: CompanyConstants.logoUrl == '' || CompanyConstants.logoUrl == null
                         ? Image.asset('assets/icons/noImg.png', height: 150, width: 150,)
                         : CircleAvatar(
-                          backgroundImage: NetworkImage(CustomerConstants.imgUrl),
-                          radius: 75,
+                          backgroundImage: NetworkImage(CompanyConstants.logoUrl),
                           backgroundColor: Colors.transparent,
-                        )
-                ),
-                SizedBox(
-                  height: 16,
-                ),
+                          radius: 70,
+                        ),),
+
+                    // child: Image.asset('assets/icons/noImg.png', height: 200, width: 200,)),                
+                SizedBox(height: 16,),
                 Text(
-                  CustomerConstants.fullName,
+                  CompanyConstants.companyName,
                   style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
                 Text(
-                  CustomerConstants.email,
+                  CompanyConstants.email,
                   style: TextStyle(color: Colors.white54, fontSize: 14),
                 ),
+                Text(
+                  CompanyConstants.serviceType,
+                  style: TextStyle(color: Colors.white54, fontSize: 14),
+                ),                
               ],
             ),
           ),
@@ -125,7 +113,7 @@ class _CustomerAccountPageState extends State<CustomerAccountPage> {
           activeColor: Color.fromRGBO(250, 89, 143, 1),
           value: switchState,
           onChanged: (bool value) {
-            setState(() {  
+            setState(() {
               switchState = !switchState;
               Provider.of<ThemeModel>(context, listen: false).toggleTheme();
               ThemeData themeData = Provider.of<ThemeModel>(context, listen: false).currentTheme;

@@ -28,6 +28,19 @@ dependencies:
   firebase_core: ^0.7.0
   cloud_firestore: ^0.16.0
   flare_flutter: ^2.0.6
+  image_picker: ^0.6.7+22
+  fluttertoast: ^7.1.6
+  firebase_storage: ^7.0.0
+  network_to_file_image: ^2.3.8
+  path_provider: ^1.6.27
+  path: ^1.7.0
+  shared_preferences: ^0.5.12+4
+  clay_containers: ^0.2.3
+  flutter_swiper: ^1.1.6
+  random_string: ^2.1.0  
+  flutter_svg: 0.19.0
+  provider: ^4.3.3
+  encrypt: ^4.1.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -52,7 +65,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/animations/loading_circle.flr
-  #   - images/a_dot_ham.jpeg
+    - assets/icons/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

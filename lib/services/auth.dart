@@ -41,8 +41,7 @@ class AuthMethods {
     } catch(e) {
       print(e.toString());
     }
-  }
-
+  }  
 
   // Signout Method
   Future signOut() async {
@@ -51,5 +50,5 @@ class AuthMethods {
     }catch(e){
       print(e.toString());
     } 
-  }
+  }  
 }
