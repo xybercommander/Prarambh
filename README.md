@@ -69,7 +69,7 @@ Prarambh is an Open Source Application made with love using Flutter to kickstart
    :point_right:Payment/COD- Since this will target local businesses we will have a payment system and also an option for COD.<br/>
    :point_right: Personalized Timeline - Based on availability and location data we are going to provide a personalized timeline to the customer so that they can buy which they look for, resulting in saving their time. <br/>
    :point_right: Shopping Cart - To keep a track - with each product bought, the customer can easily see the items he/she bought through the shopping cart option. <br/>
-   :point_right: Extensice Search - With the extensive search option a customer can search for their desires,anything they wish for. <br/>
+   :point_right: Extensive Search - With the extensive search option a customer can search for their desires,anything they wish for. <br/>
 
 <i><p align="center"><a href="#content">⬆️ BACK TO CONTENT</a></p></i><br>
 
