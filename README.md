@@ -3,6 +3,7 @@
 <h1 align="center"><img width=50% height=50% alt="Prarambh" src="https://user-images.githubusercontent.com/71402528/107684498-e4a1cc80-6cc8-11eb-8e09-ee389bda4bde.jpg"></h1>
 <h1 align="center">Made For Local Businesses</h1>
 
+![hack-it-out](https://user-images.githubusercontent.com/71402528/110915981-514ace00-833e-11eb-9db1-93a10a45fe59.png)
 <!--[![All Contributors](https://img.shields.io/badge/all_contributors-04-orange.svg?style=flat-square)](#contributors-)-->
 
 [![forthebadge](https://forthebadge.com/images/badges/built-by-developers.svg)](https://forthebadge.com)
@@ -38,7 +39,9 @@
 
 <h2 align="center" id="Inspiration"> :label: Inspiration</h2>
 
-Prarambh is an Open Source Application made with love using Flutter to kickstart, uplift & help small scale business and industries to sell their products. The idea was generated during Hack It Out Hackathon by IIT Patna. Prarambh is the one way stop to upgrade businesses and local vendors and shops near a potential customer with awesome features like chat, payment,review all integrated into one.
+Prarambh is an Open Source Application (which got First Prize in Hack-It-Out) made with love using Flutter to kickstart, uplift & help small scale business and industries to sell their products. The idea was generated during Hack It Out Hackathon by IIT Patna. Prarambh is the one way stop to upgrade businesses and local vendors and shops near a potential customer with awesome features like chat, payment,review all integrated into one.
+
+
 
 
 <i><p align="center"><a href="#content">⬆️ BACK TO CONTENT</a></p></i><br>
