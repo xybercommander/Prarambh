@@ -1,5 +1,7 @@
-import 'dart:io';
 
+// THIS CODE IS FOR THE COMPANY SIGN UP PAGE
+
+import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';

@@ -1,3 +1,6 @@
+
+// THIS PAGE IS FOR THE COMPANY ACCOUNT PAGE
+
 import 'package:flutter/material.dart';
 import 'package:hack_it_out_demo/SignInPages/login.dart';
 import 'package:hack_it_out_demo/helper/sharedpreferences.dart';

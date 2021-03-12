@@ -1,3 +1,6 @@
+
+// THIS CODE GETS THE INITIAL DATA FROM FIRESTORE
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';

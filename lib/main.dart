@@ -1,3 +1,6 @@
+
+// THIS CODE CONTAINS THE MAIN FUNCTION
+
 import 'package:flutter/material.dart';
 import 'package:hack_it_out_demo/model/theme_model.dart';
 import 'package:hack_it_out_demo/views/splash_screen.dart';

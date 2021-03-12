@@ -1,3 +1,6 @@
+
+// THIS PAGE IS FOR THE CHAT SCREEN
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:encrypt/encrypt.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +27,8 @@ class _ChatScreenState extends State<ChatScreen> {
 
   DatabaseMethods databaseMethods = DatabaseMethods();
   Stream messageStream;
+
+  final encrypter = Encrypter(AES(EncryptionConstants.encryptionKey));
   
 
   // Initial functions to be executed
@@ -92,9 +97,11 @@ class _ChatScreenState extends State<ChatScreen> {
           padding: EdgeInsets.only(bottom: 80),
           itemCount: snapshot.data.docs.length,
           itemBuilder: (context, index) {
-            DocumentSnapshot ds = snapshot.data.docs[index];
+            DocumentSnapshot ds = snapshot.data.docs[index]; 
 
-            return chatBubble(ds['message'], myName == ds['sendBy']);
+            String message = encrypter.decrypt64(ds['message'], iv: EncryptionConstants.iv);           
+
+            return chatBubble(message, myName == ds['sendBy']);
           },
         ) : Center(
           child: Column(
@@ -121,7 +128,8 @@ class _ChatScreenState extends State<ChatScreen> {
   addMessage(bool sendClicked) {
     if(messageTextEditingController.text != '') {
             
-      String message = messageTextEditingController.text;
+      final encrypted = encrypter.encrypt(messageTextEditingController.text, iv: EncryptionConstants.iv);
+      String message = encrypted.base64;
       var lastMessageTimeStamp = DateTime.now();
 
       Map<String, dynamic> messageInfoMap = {

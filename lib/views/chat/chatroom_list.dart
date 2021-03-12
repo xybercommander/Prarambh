@@ -1,7 +1,12 @@
+
+// THIS PAGE IS FOR THE CHAT ROOM LIST
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:encrypt/encrypt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hack_it_out_demo/helper/sharedpreferences.dart';
+import 'package:hack_it_out_demo/modules/encryption_constants.dart';
 import 'package:hack_it_out_demo/services/database.dart';
 import 'package:hack_it_out_demo/widgets/chat_widgets.dart';
 
@@ -15,6 +20,7 @@ class _ChatRoomListState extends State<ChatRoomList> {
   DatabaseMethods databaseMethods = DatabaseMethods();
   Stream chatRoomsStream;
   bool isCompany;
+  final encrypter = Encrypter(AES(EncryptionConstants.encryptionKey));
 
   getIsCompany() async {
     isCompany = await SharedPref.getIsCompanySharedPreference();
@@ -40,7 +46,8 @@ class _ChatRoomListState extends State<ChatRoomList> {
           itemBuilder: (context, index) {
             DocumentSnapshot ds = snapshot.data.docs[index];
             // return Text(ds.id.replaceAll(CustomerConstants.fullName, '').replaceAll('_', ''));
-            return ChatRoomListTile(ds.id, ds['lastMessage'], isCompany);
+            String message = encrypter.decrypt64(ds['lastMessage'], iv: EncryptionConstants.iv);
+            return ChatRoomListTile(ds.id, message, isCompany);
           },
         ) : Center(
           child: Column(

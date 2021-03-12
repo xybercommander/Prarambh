@@ -1,3 +1,6 @@
+
+// THIS CODE IS FOR THE PROFILE TYPE SELECTION PAGE
+
 import 'package:flutter/material.dart';
 import 'package:hack_it_out_demo/SignInPages/company_signup.dart';
 import 'package:hack_it_out_demo/SignInPages/login.dart';
@@ -26,13 +29,13 @@ class ProfileType extends StatelessWidget {
                 children: [
                   Text(
                     "Profile Type,",
-                    style: TextStyle(fontSize: 60, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 60, fontWeight: FontWeight.bold, color: Colors.black),
                   ),
                   Text(
                     "Select a Profile Type According to your needs",
                     style: TextStyle(
                         height: 2,
-                        fontSize: 16,
+                        fontSize: 14,
                         fontWeight: FontWeight.bold,
                         color: Colors.grey),
                   ),
@@ -40,7 +43,7 @@ class ProfileType extends StatelessWidget {
               ),
             ),
             Container(
-              height: 450,
+              height: 430,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -89,7 +92,7 @@ class ProfileType extends StatelessWidget {
                                   Text(
                                     "Select this profile type if you are looking for services",
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: 12),
+                                        color: Colors.white, fontSize: 11),
                                   )
                                 ],
                               ),
@@ -143,7 +146,7 @@ class ProfileType extends StatelessWidget {
                                     "Select this profile type if you want to sell your services",
                                     style: TextStyle(
                                         color: Color.fromRGBO(143, 148, 251, 1),
-                                        fontSize: 12),
+                                        fontSize: 11),
                                   )
                                 ],
                               ),
@@ -162,7 +165,7 @@ class ProfileType extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("I am already a member, "),
+                  Text("I am already a member, ", style: TextStyle(color: Colors.black),),
                   GestureDetector(
                       onTap: () => Navigator.pushReplacement(
                             context,
